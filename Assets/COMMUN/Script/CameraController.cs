@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
 
         var targetRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
-        transform.position = followTarget.position - targetRotation * new Vector3(0, offsetY, distance);
+        transform.position = Vector3.Lerp(transform.position,followTarget.position - targetRotation * new Vector3(0, offsetY, distance), Time.deltaTime / 0.02f);
         transform.rotation = targetRotation;
     }
 }
