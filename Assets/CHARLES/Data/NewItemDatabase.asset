@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5cd007cbbc9194fa12d1c94ce1dbd3, type: 3}
   m_Name: NewItemDatabase
   m_EditorClassIdentifier: 
+  datas:
+  - label: Objet principal 1
+    caption: "Une statue repr\xE9sentant un tigre"
+    mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+    categories: 0
+  - label: Objet principal 2
+    caption: "Une statue repr\xE9sentant un serpent"
+    mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    categories: 0
