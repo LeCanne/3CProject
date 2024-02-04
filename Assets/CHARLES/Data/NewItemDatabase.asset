@@ -16,8 +16,15 @@ MonoBehaviour:
   - label: Objet principal 1
     caption: "Une statue repr\xE9sentant un tigre"
     mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+    sprite: {fileID: 0}
     categories: 0
   - label: Objet principal 2
     caption: "Une statue repr\xE9sentant un serpent"
     mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    sprite: {fileID: 0}
     categories: 0
+  - label: Objet principal 2
+    caption: "Une statue repr\xE9sentant un serpent"
+    mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    categories: 1

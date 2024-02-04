@@ -15,5 +15,6 @@ public class ItemData
     public string label;
     public string caption;
     public Mesh mesh;
+    public Sprite sprite;
     public CATEGORY categories;
 }
