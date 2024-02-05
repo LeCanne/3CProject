@@ -15,6 +15,7 @@ public class ItemController : MonoBehaviour
 
     public CATEGORY category;
     public string label;
+    public string caption;
     public Sprite sp;
 
     // Start is called before the first frame update
@@ -25,8 +26,9 @@ public class ItemController : MonoBehaviour
 
             if (category == CATEGORY.NON_IMPORTANT && data.categories == ItemData.CATEGORY.NON_IMPORTANT) 
             {
-                sp = data.sprite;
+                sp = data.icon;
                 label = data.label;
+                caption = data.caption;
                 Debug.Log(label);
             }
 

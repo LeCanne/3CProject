@@ -1,18 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class SlotController : MonoBehaviour
+public class SlotController : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("COMMON :")]
+    public MaskableGraphic imgItem;
+    public MaskableGraphic txtLabel;
+    public MaskableGraphic txtQuantity;
+    public MaskableGraphic txtNbQuantity;
+    public TextMeshProUGUI txtNbUnit;
+    public TextMeshProUGUI txtLabelInit;
+
+    [Header("SHOP :")]
+    public MaskableGraphic txtPrice;
+
+    public Action onSelect;
+    public Action onDeselect;
+
+    public void OnDeselect(BaseEventData eventData)
     {
-        
+        onDeselect?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSelect(BaseEventData eventData)
     {
-        
+        onSelect?.Invoke();
     }
 }

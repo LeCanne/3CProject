@@ -16,6 +16,7 @@ namespace _3CFeel.Controller
 
         Rigidbody rb;
 
+        public GameObject panelInventaire;
 
         [Header("PlayerSettings")]
         public float MaxSpeed;
@@ -47,12 +48,22 @@ namespace _3CFeel.Controller
 
         }
 
+        private void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                panelInventaire.SetActive(true);
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                panelInventaire.SetActive(false);
+            }
+        }
 
         void FixedUpdate()
         {
             OnMove();
-
-
         }
 
         private void OnEnable()
@@ -144,6 +155,7 @@ namespace _3CFeel.Controller
             if (other.CompareTag("Item"))
             {
                 theInventory.AddSlot(other.gameObject.GetComponent<ItemController>());
+                Destroy(other.gameObject);
             }
         }
 
