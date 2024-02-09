@@ -16,6 +16,7 @@ namespace _3CFeel.Controller
 
         Rigidbody rb;
 
+        public GameObject panelInventaire;
 
         [Header("PlayerSettings")]
         public float MaxSpeed;
@@ -26,6 +27,10 @@ namespace _3CFeel.Controller
 
         [Header("AttachedElements")]
         public Camera Camera;
+
+        [Header("Script")]
+        public ItemController item;
+        public InventoryController theInventory;
 
         private void Awake()
         {
@@ -43,18 +48,28 @@ namespace _3CFeel.Controller
 
         }
 
+        private void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                panelInventaire.SetActive(true);
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                panelInventaire.SetActive(false);
+            }
+        }
 
         void FixedUpdate()
         {
             OnMove();
-            
-
         }
 
         private void OnEnable()
         {
             move.Enable();
-            
+
             inputActions.Gameplay.Jump.started += DoJump;
             inputActions.Gameplay.Enable();
         }
@@ -62,31 +77,31 @@ namespace _3CFeel.Controller
         private void OnDisable()
         {
             move.Disable();
-           
+
             inputActions.Gameplay.Jump.started -= DoJump;
             inputActions.Gameplay.Disable();
         }
 
         public void OnMove()
         {
-            
-            
+
+
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
 
             rb.AddForce(forceDirection, ForceMode.Impulse);
             forceDirection = Vector3.zero;
 
-            if(rb.velocity.y < 0f)
+            if (rb.velocity.y < 0f)
             {
                 rb.velocity += Vector3.down * (Physics.gravity.y * -2) * Time.fixedDeltaTime;
             }
 
             Vector3 horizontalVelocity = rb.velocity;
             horizontalVelocity.y = 0;
-            if(horizontalVelocity.sqrMagnitude > MaxSpeed * MaxSpeed)
+            if (horizontalVelocity.sqrMagnitude > MaxSpeed * MaxSpeed)
             {
-                rb.velocity = horizontalVelocity.normalized * MaxSpeed + Vector3.up * rb.velocity.y ;
+                rb.velocity = horizontalVelocity.normalized * MaxSpeed + Vector3.up * rb.velocity.y;
             }
         }
 
@@ -100,8 +115,6 @@ namespace _3CFeel.Controller
             }
         }
 
-      
-
         private Vector3 GetCameraForward(Camera playerCam)
         {
             Vector3 forward = playerCam.transform.forward;
@@ -111,6 +124,7 @@ namespace _3CFeel.Controller
 
 
         }
+
         private Vector3 GetCameraRight(Camera playerCam)
         {
             Vector3 forward = playerCam.transform.right;
@@ -130,10 +144,19 @@ namespace _3CFeel.Controller
             {
                 Debug.Log("Nope");
                 return false;
-                
+
             }
-            
-               
+
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Item"))
+            {
+                theInventory.AddSlot(other.gameObject.GetComponent<ItemController>());
+                Destroy(other.gameObject);
+            }
         }
 
         private void OnDrawGizmos()
