@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
     float rotationY;
     public float offsetY;
 
+    public static bool noUseCamera;
+
     [Header("Settings")]
     public float rotationspeed;
     // Start is called before the first frame update
@@ -26,13 +28,16 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotationX += Input.GetAxis("Mouse Y") * rotationspeed;
-        rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
-        rotationY += Input.GetAxis("Mouse X") * rotationspeed;
+        if (!noUseCamera)
+        {
+            rotationX += Input.GetAxis("Mouse Y") * rotationspeed;
+            rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
+            rotationY += Input.GetAxis("Mouse X") * rotationspeed;
 
-        var targetRotation = Quaternion.Euler(-rotationX, rotationY, 0);
+            var targetRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
-        transform.position = Vector3.Lerp(transform.position,followTarget.position - targetRotation * new Vector3(0, offsetY, distance), Time.deltaTime / 0.02f);
-        transform.rotation = targetRotation;
+            transform.position = Vector3.Lerp(transform.position,followTarget.position - targetRotation * new Vector3(0, offsetY, distance), Time.deltaTime / 0.02f);
+            transform.rotation = targetRotation;
+        }
     }
 }

@@ -52,12 +52,16 @@ namespace _3CFeel.Controller
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
+                Time.timeScale = 0f;
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
+                CameraController.noUseCamera = false;
                 panelInventaire.SetActive(false);
+                Time.timeScale = 1f;
             }
         }
 

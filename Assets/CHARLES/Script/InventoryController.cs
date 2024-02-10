@@ -73,6 +73,11 @@ public class InventoryController : MonoBehaviour
         //imgInfoCaption.color = data.color;
     }
 
+    public void UseObject()
+    {
+
+    }
+
     private void SetMaskableGraphicValue(ref MaskableGraphic mg, object value)
     {
         switch (mg)
