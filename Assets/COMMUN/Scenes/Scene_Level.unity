@@ -141,11 +141,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 547632623455770253, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 5d99f1b22fa67d24cbd46bb215f05301,
+        type: 2}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 724568870}
+    - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: theInventory
@@ -225,7 +236,7 @@ GameObject:
   - component: {fileID: 334163071}
   - component: {fileID: 334163070}
   - component: {fileID: 334163069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23702,7 +23713,7 @@ GameObject:
   - component: {fileID: 1544188769}
   - component: {fileID: 1544188768}
   - component: {fileID: 1544188767}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27570,7 +27581,7 @@ GameObject:
   - component: {fileID: 1980544188}
   - component: {fileID: 1980544187}
   - component: {fileID: 1980544186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32473,7 +32484,7 @@ GameObject:
   - component: {fileID: 2054221395}
   - component: {fileID: 2054221394}
   - component: {fileID: 2054221393}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

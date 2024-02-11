@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c654df7545dd0a74b95f9b7a9d121e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pm: {fileID: 13400000, guid: 5d99f1b22fa67d24cbd46bb215f05301, type: 2}
   panelInventaire: {fileID: 0}
   MaxSpeed: 5
   rotationSpeed: 0
@@ -155,3 +156,8 @@ MonoBehaviour:
   Camera: {fileID: 0}
   item: {fileID: 0}
   theInventory: {fileID: 0}
+  playerHeight: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  maxSlopeAngle: 0

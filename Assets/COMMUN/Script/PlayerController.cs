@@ -15,6 +15,8 @@ namespace _3CFeel.Controller
         InputAction jump;
 
         Rigidbody rb;
+        CapsuleCollider capCollider;
+        public PhysicMaterial pm;
 
         public GameObject panelInventaire;
 
@@ -32,24 +34,40 @@ namespace _3CFeel.Controller
         public ItemController item;
         public InventoryController theInventory;
 
+        [Header("Ground Check")]
+        public float playerHeight;
+        public LayerMask whatIsGround;
+        bool grounded;
+
+        [Header("Slope Handling")]
+        public float maxSlopeAngle;
+        private RaycastHit slopeHit;
+        private bool exitingSlope;
+
+        Vector3 moveDirection;
+
         private void Awake()
         {
             inputActions = new();
             move = inputActions.Gameplay.Move;
             jump = inputActions.Gameplay.Jump;
             rb = GetComponent<Rigidbody>();
+            capCollider = GetComponent<CapsuleCollider>();
 
             inputActions = new Player();
             //_input = GetComponent<PlayerInput>();
+
+
         }
 
         void Start()
         {
-
+            
         }
 
         private void Update()
         {
+            // Boutons pour ouvrir/fermer l'inventaire
             if (Input.GetButtonDown("Fire1"))
             {
                 CameraController.noUseCamera = true;
@@ -62,6 +80,19 @@ namespace _3CFeel.Controller
                 CameraController.noUseCamera = false;
                 panelInventaire.SetActive(false);
                 Time.timeScale = 1f;
+            }
+
+            // On détecte le sol pour modifier la friction du physic material
+            Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
+            if (Physics.Raycast(ray, out RaycastHit hit, 1f))
+            {
+                pm.staticFriction = 1f;
+                pm.dynamicFriction = 1f;
+            }
+            else
+            {
+                pm.staticFriction = 0.6f;
+                pm.dynamicFriction = 0.05f;
             }
         }
 
@@ -88,8 +119,6 @@ namespace _3CFeel.Controller
 
         public void OnMove()
         {
-
-
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
 
@@ -107,6 +136,15 @@ namespace _3CFeel.Controller
             {
                 rb.velocity = horizontalVelocity.normalized * MaxSpeed + Vector3.up * rb.velocity.y;
             }
+
+            // Quand on est sur la pente
+            if (OnSlope() && !exitingSlope)
+            {
+                rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 20f, ForceMode.Force);
+            }
+
+            // Rester sur la pente sans glisser
+            rb.useGravity = !OnSlope();
         }
 
         public void DoJump(InputAction.CallbackContext obj)
@@ -148,14 +186,29 @@ namespace _3CFeel.Controller
             {
                 Debug.Log("Nope");
                 return false;
+            }
+        }
 
+        // Méthode pour la pente
+        private bool OnSlope()
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+            {
+                float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                return angle < maxSlopeAngle && angle != 0;
             }
 
+            return false;
+        }
 
+        private Vector3 GetSlopeMoveDirection()
+        {
+            return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            // Détecter les objets récupérables
             if (other.CompareTag("Item"))
             {
                 theInventory.AddSlot(other.gameObject.GetComponent<ItemController>());
@@ -169,4 +222,5 @@ namespace _3CFeel.Controller
         }
     }
 }
-
+// Melvin LECANNE
+// Charles DUVERGER
