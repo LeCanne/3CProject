@@ -103,6 +103,11 @@ namespace _3CFeel.Controller
                 pm.staticFriction = 0.6f;
                 pm.dynamicFriction = 0.05f;
             }
+
+            if (Input.GetButtonDown("Fire3") && ItemController.canTake)
+            {
+                item.TakeObject();
+            }
         }
 
         void FixedUpdate()
@@ -237,8 +242,15 @@ namespace _3CFeel.Controller
             // Détecter les objets récupérables
             if (other.CompareTag("Item"))
             {
-                theInventory.AddSlot(other.gameObject.GetComponent<ItemController>());
-                Destroy(other.gameObject);
+                item = other.gameObject.GetComponent<ItemController>();
+            }
+        }
+
+        private void OnTriggerExit(Collider other) 
+        {
+            if (other.CompareTag("Item"))
+            {
+                item = null;
             }
         }
 
