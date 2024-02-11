@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     public static bool noUseCamera;
     public Transform t_camera;
-    public Vector3 camera_offset;
+    private Vector3 camera_offset;
     private Quaternion camRotation;
     private RaycastHit hit;
    
