@@ -15,16 +15,26 @@ MonoBehaviour:
   datas:
   - label: Objet principal 1
     caption: "Une statue repr\xE9sentant un tigre."
-    mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+    mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     categories: 0
   - label: Objet principal 2
     caption: "Une statue repr\xE9sentant un serpent."
-    mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    categories: 0
-  - label: Objet principal 2
-    caption: "Une statue repr\xE9sentant un serpent."
+    categories: 1
+  - label: Objet secondaire 1
+    caption: Une petite fleur.
     mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    categories: 1
+    categories: 2
+  - label: Objet secondaire 2
+    caption: Une ancienne inscription.
+    mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    categories: 3
+  - label: Objet principal 2
+    caption: Un CHAMPIX !
+    mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    categories: 4

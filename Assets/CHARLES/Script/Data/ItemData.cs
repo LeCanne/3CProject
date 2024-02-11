@@ -8,8 +8,11 @@ public class ItemData
 {
     public enum CATEGORY
     {
-        IMPORTANT,
-        NON_IMPORTANT
+        IMPORTANT1,
+        IMPORTANT2,
+        NON_IMPORTANT1,
+        NON_IMPORTANT2,
+        NON_IMPORTANT3,
     }
 
     public string label;
