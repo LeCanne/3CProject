@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -86,8 +87,16 @@ namespace _3CFeel.Controller
             Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit, 1f))
             {
-                pm.staticFriction = 1f;
-                pm.dynamicFriction = 1f;
+                if (OnSlope() && !exitingSlope)
+                {
+
+                }
+                else
+                {
+                    pm.staticFriction = 3f;
+                    pm.dynamicFriction = 3f;
+                }
+                  
             }
             else
             {
@@ -140,7 +149,24 @@ namespace _3CFeel.Controller
             // Quand on est sur la pente
             if (OnSlope() && !exitingSlope)
             {
+                Debug.Log("OnSlope");
                 rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 20f, ForceMode.Force);
+                rb.drag = 2f;
+
+                pm.staticFriction = 1f;
+                pm.dynamicFriction = 1f;
+
+                
+
+
+                
+
+
+            }
+            else
+            {
+                
+                rb.drag = 0f;
             }
 
             // Rester sur la pente sans glisser
@@ -203,7 +229,7 @@ namespace _3CFeel.Controller
 
         private Vector3 GetSlopeMoveDirection()
         {
-            return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+            return Vector3.ProjectOnPlane(forceDirection, slopeHit.normal).normalized;
         }
 
         private void OnTriggerEnter(Collider other)

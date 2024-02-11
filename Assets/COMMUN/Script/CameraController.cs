@@ -4,40 +4,51 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform followTarget;
+    
 
-    [SerializeField] float distance = 5;
+    public float cameraSmoothingFactor = 1;
 
-    [SerializeField] float minVerticalAngle = -45f;
-    [SerializeField] float maxVerticalAngle = 45f;
-
-    float rotationX;
-    float rotationY;
-    public float offsetY;
+    public float minVerticalAngle = -45f;
+    public float maxVerticalAngle = 45f;
 
     public static bool noUseCamera;
+    public Transform t_camera;
+    public Vector3 camera_offset;
+    private Quaternion camRotation;
+    private RaycastHit hit;
+   
 
-    [Header("Settings")]
-    public float rotationspeed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        camRotation = transform.localRotation;
+        camera_offset = t_camera.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!noUseCamera)
+
+        if (noUseCamera == false)
         {
-            rotationX += Input.GetAxis("Mouse Y") * rotationspeed;
-            rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
-            rotationY += Input.GetAxis("Mouse X") * rotationspeed;
 
-            var targetRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
-            transform.position = Vector3.Lerp(transform.position,followTarget.position - targetRotation * new Vector3(0, offsetY, distance), Time.deltaTime / 0.02f);
-            transform.rotation = targetRotation;
+            camRotation.x += Input.GetAxis("Mouse Y") * cameraSmoothingFactor * (-1);
+            camRotation.y += Input.GetAxis("Mouse X") * cameraSmoothingFactor;
+
+            camRotation.x = Mathf.Clamp(camRotation.x, minVerticalAngle, maxVerticalAngle);
+
+            transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
+
+            if (Physics.Linecast(transform.position, transform.position + transform.localRotation * camera_offset, out hit))
+            {
+                t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point));
+            }
+            else
+            {
+                t_camera.localPosition = Vector3.Lerp(t_camera.localPosition, camera_offset, Time.deltaTime);
+            }
         }
     }
 }
