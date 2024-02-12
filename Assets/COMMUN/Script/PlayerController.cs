@@ -149,7 +149,7 @@ namespace _3CFeel.Controller
 
             if (rb.velocity.y < 0f)
             {
-                rb.velocity += Vector3.down * (Physics.gravity.y * -2) * Time.fixedDeltaTime;
+                rb.velocity += Vector3.down * (Physics.gravity.y * -2f) * Time.fixedDeltaTime;
             }
 
             Vector3 horizontalVelocity = rb.velocity;
