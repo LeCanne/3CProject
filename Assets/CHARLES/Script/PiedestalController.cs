@@ -6,13 +6,26 @@ using UnityEngine.UI;
 
 public class PiedestalController : MonoBehaviour
 {
+    public enum CATEGORY
+    {
+        PIEDESTAL1,
+        PIEDESTAL2
+    }
+
     public Transform trPlacement;
     public GameObject prefabItem;
 
     public GameObject putObject;
     public Image imgPutObject;
     public TextMeshProUGUI txtPutObject;
-    public static bool canPut;
+    public static bool canPut, havePut;
+
+    public void PutObject()
+    {
+        putObject.SetActive(false);
+        canPut = false;
+        havePut = true;
+    }
 
     public IEnumerator PutobjectOn()
     {
@@ -55,7 +68,7 @@ public class PiedestalController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !havePut)
         {
             putObject.SetActive(true);
             canPut = true;
@@ -65,7 +78,7 @@ public class PiedestalController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !havePut)
         {
             canPut = false;
             StartCoroutine(PutobjectOf());

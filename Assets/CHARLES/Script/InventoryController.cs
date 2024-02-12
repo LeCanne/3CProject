@@ -11,6 +11,7 @@ public class InventoryController : MonoBehaviour
     [Header("Inventaire")]
     public GameObject slotInventaire;
     public GameObject parentSlotInventaire;
+    public GameObject buttonUse;
 
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
@@ -40,7 +41,7 @@ public class InventoryController : MonoBehaviour
             var newSlot = Instantiate(slotInventaire, parentSlotInventaire.transform);
             if (newSlot.TryGetComponent<SlotController>(out var sc))
             {
-                newSlot.GetComponent<Button>().onClick.AddListener(() => OnSlotSelected(item));
+                newSlot.GetComponent<Button>().onClick.AddListener(() => OnSlotSelected(item, newSlot));
 
                 InitSlotBuy(sc, item);
             }
@@ -54,13 +55,17 @@ public class InventoryController : MonoBehaviour
         //SetMaskableGraphicValue(ref slot.txtLabel, data.label);
     }
 
-    public void OnSlotSelected(ItemController data)
+    public void OnSlotSelected(ItemController data, GameObject newSlot)
     {
-        //slotDatas.Clear();
-
-        //slotDatas.Add(data);
-
-        //SetSelectableValue(ref ifQuantity, nbQuantity <= 0 ? 1 : nbQuantity);
+        if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut)
+        {
+            buttonUse.SetActive(true);
+            buttonUse.GetComponent<Button>().onClick.AddListener(() => UseObject(newSlot));
+        }
+        else
+        {
+            buttonUse.SetActive(false);
+        }
 
         ShowDataInfo(data);
     }
@@ -73,9 +78,11 @@ public class InventoryController : MonoBehaviour
         //imgInfoCaption.color = data.color;
     }
 
-    public void UseObject()
+    public void UseObject(GameObject newSlot)
     {
-
+        newSlot.SetActive(false);
+        PiedestalController.canPut = false;
+        PiedestalController.havePut = true;
     }
 
     private void SetMaskableGraphicValue(ref MaskableGraphic mg, object value)
