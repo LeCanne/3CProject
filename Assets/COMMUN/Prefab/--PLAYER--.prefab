@@ -156,12 +156,13 @@ MonoBehaviour:
   jumpForce: 5
   Camera: {fileID: 0}
   item: {fileID: 0}
+  piedestal: {fileID: 0}
   theInventory: {fileID: 0}
-  playerHeight: 0
+  PlayerHeight: 1.9
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  maxSlopeAngle: 0
+  MaxSlopeAngle: 50
 --- !u!1 &2086434513114306873
 GameObject:
   m_ObjectHideFlags: 0
