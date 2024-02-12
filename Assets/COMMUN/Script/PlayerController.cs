@@ -37,14 +37,15 @@ namespace _3CFeel.Controller
         public InventoryController theInventory;
 
         [Header("Ground Check")]
-        public float playerHeight;
+        public float PlayerHeight;
         public LayerMask whatIsGround;
         bool grounded;
 
         [Header("Slope Handling")]
-        public float maxSlopeAngle;
+        public float MaxSlopeAngle;
         private RaycastHit slopeHit;
         private bool exitingSlope;
+        private bool hasExited;
 
         Vector3 moveDirection;
 
@@ -88,15 +89,16 @@ namespace _3CFeel.Controller
             Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit, 1f))
             {
-                if (OnSlope() && !exitingSlope)
+                if (OnSlope() == false)
                 {
 
-                }
-                else
-                {
+
+
+
                     pm.staticFriction = 3f;
                     pm.dynamicFriction = 3f;
                 }
+                
                   
             }
             else
@@ -164,13 +166,25 @@ namespace _3CFeel.Controller
             {
                 Debug.Log("OnSlope");
                 rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 20f, ForceMode.Force);
-                rb.drag = 2f;
+                rb.drag = 1f;
 
                 pm.staticFriction = 1f;
                 pm.dynamicFriction = 1f;
+                hasExited = true;
+
+                if(rb.velocity.y > 0 && IsGrounded() == false)
+                {
+                    rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                }
             }
             else
             {
+
+                if(hasExited == true)
+                {
+                    rb.AddForce(Vector3.down * 80, ForceMode.Impulse);
+                    hasExited = false;
+                }
                 rb.drag = 0f;
             }
 
@@ -207,7 +221,7 @@ namespace _3CFeel.Controller
 
         private bool IsGrounded()
         {
-            Ray ray = new Ray(this.transform.position + Vector3.up * -0.10f, Vector3.down);
+            Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit, 1f))
             {
                 Debug.Log("Detect");
@@ -223,10 +237,10 @@ namespace _3CFeel.Controller
         // Méthode pour la pente
         private bool OnSlope()
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+            if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, PlayerHeight * 0.5f + 0.3f))
             {
                 float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-                return angle < maxSlopeAngle && angle != 0;
+                return angle < MaxSlopeAngle && angle != 0;
             }
 
             return false;

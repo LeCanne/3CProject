@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: playerHeight
-      value: 1.5
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: maxSlopeAngle
-      value: 30
+      value: 40.7
       objectReference: {fileID: 0}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
