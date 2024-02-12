@@ -171,7 +171,6 @@ namespace _3CFeel.Controller
             }
             else
             {
-                rb.mass = 2f;
                 rb.drag = 0f;
             }
 
