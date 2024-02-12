@@ -71,7 +71,7 @@ namespace _3CFeel.Controller
         private void Update()
         {
             // Boutons pour ouvrir/fermer l'inventaire
-            if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut)
+            if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2)
             {
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
@@ -110,9 +110,22 @@ namespace _3CFeel.Controller
             if (Input.GetButtonDown("Fire3") && ItemController.canTake)
             {
                 item.TakeObject();
+
+                if (piedestal != null) 
+                { 
+                    if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL1)
+                    {
+                        PiedestalController.havePut1 = true;
+                    }
+
+                    if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL2)
+                    {
+                        PiedestalController.havePut2 = true;
+                    }
+                }
             }
 
-            if (Input.GetButtonDown("Fire3") && PiedestalController.canPut)
+            if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 || Input.GetButtonDown("Fire3") && PiedestalController.canPut2)
             {
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);

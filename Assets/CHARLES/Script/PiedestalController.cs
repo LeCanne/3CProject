@@ -6,25 +6,57 @@ using UnityEngine.UI;
 
 public class PiedestalController : MonoBehaviour
 {
+    public ItemDatabase database;
+    public InventoryController theInventory;
+
     public enum CATEGORY
     {
         PIEDESTAL1,
         PIEDESTAL2
     }
-
+    public CATEGORY category;
     public Transform trPlacement;
     public GameObject prefabItem;
 
     public GameObject putObject;
     public Image imgPutObject;
     public TextMeshProUGUI txtPutObject;
-    public static bool canPut, havePut;
+    public GameObject takeObject;
+    public Image imgTakeObject;
+    public TextMeshProUGUI txtTakeObject;
+    public static bool canPut1, havePut1;
+    public static bool canPut2, havePut2;
 
-    public void PutObject()
+    public void PutObject(ItemController data)
     {
         putObject.SetActive(false);
-        canPut = false;
-        havePut = true;
+
+        GameObject newItem = Instantiate(prefabItem);
+        newItem.transform.position = trPlacement.position;
+
+        newItem.GetComponent<ItemController>().takeObject = takeObject;
+        newItem.GetComponent<ItemController>().imgTakeObject = imgTakeObject;
+        newItem.GetComponent<ItemController>().txtTakeObject = txtTakeObject;
+        newItem.GetComponent<ItemController>().theInventory = theInventory;
+
+        foreach (var database in database.datas)
+        {
+            if (newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1 && database.categories == ItemData.CATEGORY.IMPORTANT1)
+            {   
+                newItem.GetComponent<ItemController>().objectMesh.sharedMesh = database.mesh;
+                newItem.GetComponent<ItemController>().sp = database.icon;
+                newItem.GetComponent<ItemController>().label = database.label;
+                newItem.GetComponent<ItemController>().caption = database.caption;
+            }
+
+            if (newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2 && database.categories == ItemData.CATEGORY.IMPORTANT2)
+            {   
+                newItem.GetComponent<ItemController>().objectMesh.sharedMesh = database.mesh;
+                newItem.GetComponent<ItemController>().sp = database.icon;
+                newItem.GetComponent<ItemController>().label = database.label;
+                newItem.GetComponent<ItemController>().caption = database.caption;
+            }
+        }
     }
 
     public IEnumerator PutobjectOn()
@@ -68,19 +100,29 @@ public class PiedestalController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !havePut)
+        if (other.CompareTag("Player") && !havePut1 || other.CompareTag("Player") && !havePut2)
         {
-            putObject.SetActive(true);
-            canPut = true;
-            StartCoroutine(PutobjectOn());
+            if (category == CATEGORY.PIEDESTAL1)
+            {
+                putObject.SetActive(true);
+                canPut1 = true;
+                StartCoroutine(PutobjectOn());
+            }
+
+            if (category == CATEGORY.PIEDESTAL2)
+            {
+                putObject.SetActive(true);
+                canPut2 = true;
+                StartCoroutine(PutobjectOn());
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && !havePut)
+        if (other.CompareTag("Player") && !havePut1 || other.CompareTag("Player") && !havePut2)
         {
-            canPut = false;
+            canPut1 = false;
             StartCoroutine(PutobjectOf());
         }
     }

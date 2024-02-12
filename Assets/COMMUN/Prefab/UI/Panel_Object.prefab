@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5431553885731265144}
   - component: {fileID: 8527768314645730496}
   m_Layer: 5
-  m_Name: Tex_TakeObject
+  m_Name: Text_TakeObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

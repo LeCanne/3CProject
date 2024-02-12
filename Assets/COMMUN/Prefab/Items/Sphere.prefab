@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 789922880087861012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.97, y: 1.74, z: -7.65}
+  m_LocalPosition: {x: 0.24526024, y: 3.1380901, z: -14.846527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,10 +122,10 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: b93df4948fd294d49bee4e21de82b6bd, type: 2}
   theInventory: {fileID: 0}
   category: 0
-  label: 
-  caption: 
-  sp: {fileID: 0}
-  ObjectMesh: {fileID: 6573890281173026197}
+  label: Objet principal 1
+  caption: "Une statue repr\xE9sentant un tigre."
+  sp: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  objectMesh: {fileID: 6573890281173026197}
   takeObject: {fileID: 0}
   imgTakeObject: {fileID: 0}
   txtTakeObject: {fileID: 0}

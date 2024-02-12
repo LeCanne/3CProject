@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
 {
     public ItemDatabase database;
     public InventoryController theInventory;
+    public PiedestalController piedestal;
 
     public enum CATEGORY
     {
@@ -22,7 +23,7 @@ public class ItemController : MonoBehaviour
     public string label;
     public string caption;
     public Sprite sp;
-    public MeshFilter ObjectMesh;
+    public MeshFilter objectMesh;
 
     public GameObject takeObject;
     public Image imgTakeObject;
@@ -41,7 +42,7 @@ public class ItemController : MonoBehaviour
         {
             if (category == CATEGORY.NON_IMPORTANT1 && data.categories == ItemData.CATEGORY.NON_IMPORTANT1) 
             {
-                ObjectMesh.sharedMesh = data.mesh;
+                objectMesh.sharedMesh = data.mesh;
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
@@ -50,7 +51,7 @@ public class ItemController : MonoBehaviour
 
             if (category == CATEGORY.NON_IMPORTANT2 && data.categories == ItemData.CATEGORY.NON_IMPORTANT2)
             {
-                ObjectMesh.sharedMesh = data.mesh;
+                objectMesh.sharedMesh = data.mesh;
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
@@ -59,7 +60,7 @@ public class ItemController : MonoBehaviour
 
             if (category == CATEGORY.NON_IMPORTANT3 && data.categories == ItemData.CATEGORY.NON_IMPORTANT3)
             {
-                ObjectMesh.sharedMesh = data.mesh;
+                objectMesh.sharedMesh = data.mesh;
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
@@ -68,7 +69,7 @@ public class ItemController : MonoBehaviour
 
             if (category == CATEGORY.IMPORTANT1 && data.categories == ItemData.CATEGORY.IMPORTANT1)
             {
-                ObjectMesh.sharedMesh = data.mesh;
+                objectMesh.sharedMesh = data.mesh;
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
@@ -77,7 +78,7 @@ public class ItemController : MonoBehaviour
 
             if (category == CATEGORY.IMPORTANT2 && data.categories == ItemData.CATEGORY.IMPORTANT2)
             {
-                ObjectMesh.sharedMesh = data.mesh;
+                objectMesh.sharedMesh = data.mesh;
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
