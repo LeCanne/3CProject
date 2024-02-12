@@ -202,11 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 1629865968}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
-      propertyPath: MaxSlopeAngle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
-        type: 3}
       propertyPath: maxSlopeAngle
       value: 40.7
       objectReference: {fileID: 0}
