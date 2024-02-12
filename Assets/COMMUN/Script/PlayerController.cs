@@ -33,6 +33,7 @@ namespace _3CFeel.Controller
 
         [Header("Script")]
         public ItemController item;
+        public PiedestalController piedestal;
         public InventoryController theInventory;
 
         [Header("Ground Check")]
@@ -69,7 +70,7 @@ namespace _3CFeel.Controller
         private void Update()
         {
             // Boutons pour ouvrir/fermer l'inventaire
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut)
             {
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
@@ -107,6 +108,13 @@ namespace _3CFeel.Controller
             if (Input.GetButtonDown("Fire3") && ItemController.canTake)
             {
                 item.TakeObject();
+            }
+
+            if (Input.GetButtonDown("Fire3") && PiedestalController.canPut)
+            {
+                CameraController.noUseCamera = true;
+                panelInventaire.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
 
