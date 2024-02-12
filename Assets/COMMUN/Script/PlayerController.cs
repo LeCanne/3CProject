@@ -171,7 +171,8 @@ namespace _3CFeel.Controller
             }
             else
             {
-                rb.drag = 3f;
+                rb.mass = 2f;
+                rb.drag = 0f;
             }
 
             // Rester sur la pente sans glisser
@@ -225,7 +226,6 @@ namespace _3CFeel.Controller
         {
             if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
             {
-                Debug.Log("VUE");
                 float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
             }
@@ -245,6 +245,11 @@ namespace _3CFeel.Controller
             {
                 item = other.gameObject.GetComponent<ItemController>();
             }
+
+            if (other.CompareTag("Piedestal"))
+            {
+                piedestal = other.gameObject.GetComponent<PiedestalController>();
+            }
         }
 
         private void OnTriggerExit(Collider other) 
@@ -252,6 +257,11 @@ namespace _3CFeel.Controller
             if (other.CompareTag("Item"))
             {
                 item = null;
+            }
+
+            if (other.CompareTag("Piedestal"))
+            {
+                piedestal = null;
             }
         }
 
