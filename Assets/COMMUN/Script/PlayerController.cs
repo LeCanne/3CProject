@@ -168,18 +168,10 @@ namespace _3CFeel.Controller
 
                 pm.staticFriction = 1f;
                 pm.dynamicFriction = 1f;
-
-                
-
-
-                
-
-
             }
             else
             {
-                
-                rb.drag = 0f;
+                rb.drag = 3f;
             }
 
             // Rester sur la pente sans glisser
@@ -233,6 +225,7 @@ namespace _3CFeel.Controller
         {
             if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
             {
+                Debug.Log("VUE");
                 float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
             }
