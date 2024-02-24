@@ -34,6 +34,7 @@ public class PiedestalController : MonoBehaviour
         GameObject newItem = Instantiate(prefabItem);
         newItem.transform.position = trPlacement.position;
 
+        newItem.GetComponent<ItemController>().category = data.category;
         newItem.GetComponent<ItemController>().takeObject = takeObject;
         newItem.GetComponent<ItemController>().imgTakeObject = imgTakeObject;
         newItem.GetComponent<ItemController>().txtTakeObject = txtTakeObject;
@@ -100,16 +101,16 @@ public class PiedestalController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !havePut1 || other.CompareTag("Player") && !havePut2)
+        if (other.CompareTag("Player"))
         {
-            if (category == CATEGORY.PIEDESTAL1)
+            if (category == CATEGORY.PIEDESTAL1 && !havePut1)
             {
                 putObject.SetActive(true);
                 canPut1 = true;
                 StartCoroutine(PutobjectOn());
             }
 
-            if (category == CATEGORY.PIEDESTAL2)
+            if (category == CATEGORY.PIEDESTAL2 && !havePut2)
             {
                 putObject.SetActive(true);
                 canPut2 = true;

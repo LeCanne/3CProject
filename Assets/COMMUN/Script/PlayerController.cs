@@ -114,12 +114,14 @@ namespace _3CFeel.Controller
                 { 
                     if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL1)
                     {
-                        PiedestalController.havePut1 = true;
+                        PiedestalController.havePut1 = false;
+                        Debug.Log(PiedestalController.havePut1);
                     }
 
                     if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL2)
                     {
-                        PiedestalController.havePut2 = true;
+                        PiedestalController.havePut2 = false;
+                        Debug.Log(PiedestalController.havePut2);
                     }
                 }
             }

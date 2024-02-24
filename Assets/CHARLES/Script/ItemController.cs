@@ -99,6 +99,7 @@ public class ItemController : MonoBehaviour
         canTake = false;
         theInventory.AddSlot(this);
         Destroy(gameObject);
+        Debug.Log(gameObject);
     }
 
     public IEnumerator TakeobjectOn()

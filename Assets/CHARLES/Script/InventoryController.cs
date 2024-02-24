@@ -92,7 +92,10 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut1 = false;
         PiedestalController.havePut1 = true;
         gameObject.SetActive(false);
+        buttonUse.SetActive(false);
         Time.timeScale = 1f;
+        buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
+        Debug.Log(PiedestalController.canPut1);
     }
 
     public void UseObject2(GameObject newSlot, ItemController data)
@@ -102,7 +105,10 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut2 = false;
         PiedestalController.havePut2 = true;
         gameObject.SetActive(false);
+        buttonUse.SetActive(false);
         Time.timeScale = 1f;
+        buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
+        Debug.Log(PiedestalController.canPut2);
     }
 
     private void SetMaskableGraphicValue(ref MaskableGraphic mg, object value)
