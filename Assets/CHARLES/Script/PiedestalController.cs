@@ -62,12 +62,12 @@ public class PiedestalController : MonoBehaviour
 
         if (category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1)
         {
-            newItem.GetComponent<Collider>().enabled = false;
+            newItem.GetComponent<SphereCollider>().enabled = false;
         }
 
         if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2)
         {
-            newItem.GetComponent<Collider>().enabled = false;
+            newItem.GetComponent<SphereCollider>().enabled = false;
         }
     }
 
