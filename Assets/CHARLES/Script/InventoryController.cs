@@ -16,6 +16,9 @@ public class InventoryController : MonoBehaviour
     public GameObject slotInventaire;
     public GameObject parentSlotInventaire;
     public GameObject buttonUse;
+    private bool canUse;
+    public ItemController theItem;
+    public GameObject theNewSlot;
 
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
@@ -31,7 +34,10 @@ public class InventoryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Fire4") && canUse)
+        {
+            UseObject1(theNewSlot, theItem);
+        }
     }
 
     public void AddSlot(ItemController item)
@@ -69,18 +75,27 @@ public class InventoryController : MonoBehaviour
     {
         if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut1 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut1)
         {
+            canUse = true;
+            theItem = data;
+            theNewSlot = newSlot;
             buttonUse.SetActive(true);
             buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
             buttonUse.GetComponent<Button>().onClick.AddListener(() => UseObject1(newSlot, data));
         }
         else if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut2 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut2)
         {
+            canUse = true;
+            theItem = data;
+            theNewSlot = newSlot;
             buttonUse.SetActive(true);
             buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
             buttonUse.GetComponent<Button>().onClick.AddListener(() => UseObject2(newSlot, data));
         }
         else
         {
+            canUse = false;
+            theItem = null;
+            theNewSlot = null;
             buttonUse.SetActive(false);
         }
 
