@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
 
     }
     public CAMERASTATES cameraState;
-
+    public Material matShader;
 
     // Start is called before the first frame update
     void Start()
@@ -61,12 +61,13 @@ public class CameraController : MonoBehaviour
         if(cameraState == CAMERASTATES.DEFAULT)
         {
            camera_offset = new Vector3(0, 0, -5.2f);
-            inclose = false;   
+            inclose = false;
+            matShader.SetFloat("_SeeThroughDistance", 1.8f);
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
             camera_offset = new Vector3(0.75f, 0, -1);
-            
+            matShader.SetFloat("_SeeThroughDistance",0f);
         }
     }
 }
