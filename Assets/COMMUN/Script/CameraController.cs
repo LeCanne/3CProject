@@ -12,11 +12,18 @@ public class CameraController : MonoBehaviour
     public float maxVerticalAngle = 45f;
 
     public static bool noUseCamera;
+    public bool inclose;
     public Transform t_camera;
     private Vector3 camera_offset;
     private Quaternion camRotation;
     private RaycastHit hit;
-   
+    public enum CAMERASTATES
+    {
+        DEFAULT,
+        CLOSE
+
+    }
+    public CAMERASTATES cameraState;
 
 
     // Start is called before the first frame update
@@ -41,7 +48,7 @@ public class CameraController : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
 
-            if (Physics.Linecast(transform.position,transform.position + transform.localRotation * camera_offset, out hit))
+            if (Physics.Linecast(transform.position, transform.position + transform.localRotation * camera_offset, out hit) && inclose == false)
             {
                 t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point));
             }
@@ -49,6 +56,17 @@ public class CameraController : MonoBehaviour
             {
                 t_camera.localPosition = Vector3.Lerp(t_camera.localPosition, camera_offset, Time.deltaTime);
             }
+        }
+
+        if(cameraState == CAMERASTATES.DEFAULT)
+        {
+           camera_offset = new Vector3(0, 0, -5.2f);
+            inclose = false;   
+        }
+        if (cameraState == CAMERASTATES.CLOSE)
+        {
+            camera_offset = new Vector3(0.75f, 0, -1);
+            inclose = true;
         }
     }
 }

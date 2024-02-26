@@ -37,6 +37,7 @@ namespace _3CFeel.Controller
         public ItemController item;
         public PiedestalController piedestal;
         public InventoryController theInventory;
+        public CameraController camControl;
 
         [Header("Ground Check")]
         public float PlayerHeight;
@@ -288,6 +289,18 @@ namespace _3CFeel.Controller
             if (other.CompareTag("Piedestal"))
             {
                 piedestal = other.gameObject.GetComponent<PiedestalController>();
+            }
+
+            //Detecter les changements de Camera
+
+            if (other.CompareTag("CloseCamera"))
+            {
+                camControl.cameraState = CameraController.CAMERASTATES.CLOSE;
+            }
+
+            if (other.CompareTag("DefaultCamera"))
+            {
+                camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
             }
         }
 
