@@ -358,6 +358,8 @@ MonoBehaviour:
     type: 3}
   parentSlotInventaire: {fileID: 5848238381391255461}
   buttonUse: {fileID: 3152694924202177916}
+  theItem: {fileID: 0}
+  theNewSlot: {fileID: 0}
   txtTitleInfo: {fileID: 1081542642270437827}
   txtInfoCaption: {fileID: 2701628268666706147}
   imgInfoCaption: {fileID: 1559156286427770368}
@@ -527,7 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

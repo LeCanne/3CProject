@@ -36,7 +36,14 @@ public class InventoryController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire4") && canUse)
         {
-            UseObject1(theNewSlot, theItem);
+            if (PiedestalController.canPut1)
+            {
+                UseObject1(theNewSlot, theItem);
+            }
+            else if (Input.GetButtonDown("Fire4") && PiedestalController.canPut2)
+            {
+                UseObject2(theNewSlot, theItem);
+            }
         }
     }
 
@@ -124,6 +131,9 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut1 = false;
         PiedestalController.havePut1 = true;
         CameraController.noUseCamera = false;
+        canUse = false;
+        theItem = null;
+        theNewSlot = null;
         gameObject.SetActive(false);
         buttonUse.SetActive(false);
         Time.timeScale = 1f;
@@ -138,6 +148,9 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut2 = false;
         PiedestalController.havePut2 = true;
         CameraController.noUseCamera = false;
+        canUse = false;
+        theItem = null;
+        theNewSlot = null;
         gameObject.SetActive(false);
         buttonUse.SetActive(false);
         Time.timeScale = 1f;

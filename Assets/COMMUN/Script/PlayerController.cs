@@ -222,7 +222,7 @@ namespace _3CFeel.Controller
         public void DoJump(InputAction.CallbackContext obj)
         {
             Debug.Log("Detect");
-            if (IsGrounded())
+            if (IsGrounded() && !CameraController.noUseCamera)
             {
                 forceDirection += Vector3.up * jumpForce;
                 Debug.Log("ProcessJump");
