@@ -27,6 +27,7 @@ public class PiedestalController : MonoBehaviour
     public static bool canPut1, havePut1;
     public static bool canPut2, havePut2;
 
+    // On ajoute l'objet qu'on a sélectionne depuis l'inventaire en donnant ses données
     public void PutObject(ItemController data)
     {
         putObject.SetActive(false);
@@ -57,6 +58,16 @@ public class PiedestalController : MonoBehaviour
                 newItem.GetComponent<ItemController>().label = database.label;
                 newItem.GetComponent<ItemController>().caption = database.caption;
             }
+        }
+
+        if (category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1)
+        {
+            newItem.GetComponent<Collider>().enabled = false;
+        }
+
+        if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2)
+        {
+            newItem.GetComponent<Collider>().enabled = false;
         }
     }
 

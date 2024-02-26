@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace _3CFeel.Controller
 {
@@ -19,6 +21,7 @@ namespace _3CFeel.Controller
         public PhysicMaterial pm;
 
         public GameObject panelInventaire;
+        public GameObject content;
 
         [Header("PlayerSettings")]
         public float MaxSpeed;
@@ -70,13 +73,16 @@ namespace _3CFeel.Controller
         private void Update()
         {
             // Boutons pour ouvrir/fermer l'inventaire
-            if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2)
-            {
+            if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
+            { 
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
                 Time.timeScale = 0f;
-            }
 
+                if (content.GetComponentInChildren<Button>())
+                    EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);
+            }
+            
             if (Input.GetButtonDown("Fire2"))
             {
                 CameraController.noUseCamera = false;
@@ -106,10 +112,12 @@ namespace _3CFeel.Controller
                 pm.dynamicFriction = 0.05f;
             }
 
+            // On récupère un objet
             if (Input.GetButtonDown("Fire3") && ItemController.canTake)
             {
                 item.TakeObject();
 
+                // On veut savoir si l'objet est sur un piédestaux ou non
                 if (piedestal != null) 
                 { 
                     if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL1)
@@ -126,11 +134,15 @@ namespace _3CFeel.Controller
                 }
             }
 
+            // On ouvre l'inventaire pour déposer un objet
             if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 || Input.GetButtonDown("Fire3") && PiedestalController.canPut2)
             {
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
                 Time.timeScale = 0f;
+
+                if (content.GetComponentInChildren<Button>())
+                    EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);
             }
         }
 

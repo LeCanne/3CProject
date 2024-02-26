@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
     public static List<ItemData> slotDatas = new();
     public PlayerController thePlayer;
+    BaseEventData eventData;
 
     [Header("Inventaire")]
     public GameObject slotInventaire;
@@ -46,6 +48,12 @@ public class InventoryController : MonoBehaviour
                 newSlot.GetComponent<Button>().onClick.AddListener(() => OnSlotSelected(item, newSlot));
 
                 InitSlotBuy(sc, item);
+
+                sc.onSelect += () => OnSlotSelected(item, newSlot);
+                sc.onDeselect += () =>
+                {
+                    RefreshInfo();
+                };
             }
         }
     }
@@ -62,11 +70,13 @@ public class InventoryController : MonoBehaviour
         if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut1 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut1)
         {
             buttonUse.SetActive(true);
+            buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
             buttonUse.GetComponent<Button>().onClick.AddListener(() => UseObject1(newSlot, data));
         }
         else if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut2 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut2)
         {
             buttonUse.SetActive(true);
+            buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
             buttonUse.GetComponent<Button>().onClick.AddListener(() => UseObject2(newSlot, data));
         }
         else
@@ -85,12 +95,20 @@ public class InventoryController : MonoBehaviour
         //imgInfoCaption.color = data.color;
     }
 
+    private void RefreshInfo()
+    {
+        RefreshMaskableGraphicValue(ref txtTitleInfo);
+        RefreshMaskableGraphicValue(ref txtInfoCaption);
+        RefreshMaskableGraphicValue(ref imgInfoCaption);
+    }
+
     public void UseObject1(GameObject newSlot, ItemController data)
     {
         thePlayer.piedestal.PutObject(data);
         Destroy(newSlot);
         PiedestalController.canPut1 = false;
         PiedestalController.havePut1 = true;
+        CameraController.noUseCamera = false;
         gameObject.SetActive(false);
         buttonUse.SetActive(false);
         Time.timeScale = 1f;
@@ -104,6 +122,7 @@ public class InventoryController : MonoBehaviour
         Destroy(newSlot);
         PiedestalController.canPut2 = false;
         PiedestalController.havePut2 = true;
+        CameraController.noUseCamera = false;
         gameObject.SetActive(false);
         buttonUse.SetActive(false);
         Time.timeScale = 1f;
@@ -122,6 +141,20 @@ public class InventoryController : MonoBehaviour
 
             case Image img: img.sprite = value as Sprite; break;
             case RawImage img: img.texture = value as Texture; break;
+        }
+    }
+
+    private void RefreshMaskableGraphicValue(ref MaskableGraphic mg)
+    {
+        switch (mg)
+        {
+            case TextMeshProUGUI txt: txt.text = ""; break;
+            case TMP_Text txt: txt.text = ""; break;
+            case Text txt: txt.text = ""; break;
+
+
+            case Image img: img.sprite = null; break;
+            case RawImage img: img.texture = null; break;
         }
     }
 }
