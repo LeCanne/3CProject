@@ -296,11 +296,13 @@ namespace _3CFeel.Controller
             if (other.CompareTag("CloseCamera"))
             {
                 camControl.cameraState = CameraController.CAMERASTATES.CLOSE;
+                MaxSpeed = 5;
             }
 
             if (other.CompareTag("DefaultCamera"))
             {
                 camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
+                MaxSpeed = 10;
             }
         }
 

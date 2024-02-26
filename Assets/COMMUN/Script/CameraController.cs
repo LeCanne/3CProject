@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour
         if (cameraState == CAMERASTATES.CLOSE)
         {
             camera_offset = new Vector3(0.75f, 0, -1);
-            inclose = true;
+            
         }
     }
 }
