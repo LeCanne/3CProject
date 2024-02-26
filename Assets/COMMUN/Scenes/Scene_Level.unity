@@ -225,6 +225,11 @@ PrefabInstance:
       propertyPath: t_camera
       value: 
       objectReference: {fileID: 724568871}
+    - target: {fileID: 3452270029855289214, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe99b0c5415542341acd3d05f8e0cfa9, type: 2}
     - target: {fileID: 4539897465994965037, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3302,6 +3307,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1497750252}
     m_Modifications:
+    - target: {fileID: 385636260660436649, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe99b0c5415542341acd3d05f8e0cfa9, type: 2}
     - target: {fileID: 1980765130910052497, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: m_Name
@@ -7206,6 +7216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597140170}
   - component: {fileID: 1597140169}
+  - component: {fileID: 1597140171}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -7290,6 +7301,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1597140171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597140168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &1616292198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8924,6 +8958,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1497750252}
     m_Modifications:
+    - target: {fileID: 385636260660436649, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe99b0c5415542341acd3d05f8e0cfa9, type: 2}
     - target: {fileID: 1980765130910052497, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: m_Name
