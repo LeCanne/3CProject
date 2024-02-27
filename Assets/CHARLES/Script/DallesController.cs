@@ -72,7 +72,7 @@ public class DallesController : MonoBehaviour
 
             if (categories == CATEGORY.FINALE && !haveWin && !haveLose)
             {
-                barrière.SetActive(false);
+                //barrière.SetActive(false);
                 foreach (var dalle in dallesArray)
                 {
                     dalle.mainMesh.material = matBlue;

@@ -45,7 +45,7 @@ public class InventoryController : MonoBehaviour
             {
                 UseObject1(theNewSlot, theItem);
             }
-            else if (Input.GetButtonDown("Fire4") && PiedestalController.canPut2)
+            else if (PiedestalController.canPut2)
             {
                 UseObject2(theNewSlot, theItem);
             }
@@ -105,7 +105,7 @@ public class InventoryController : MonoBehaviour
     {
         if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut1 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut1)
         {
-            content = data.gameObject;
+            //content = data.gameObject;
             canUse = true;
             theItem = data;
             theNewSlot = newSlot;
@@ -115,7 +115,7 @@ public class InventoryController : MonoBehaviour
         }
         else if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut2 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut2)
         {
-            content = data.gameObject;
+            //content = data.gameObject;
             canUse = true;
             theItem = data;
             theNewSlot = newSlot;
@@ -163,7 +163,6 @@ public class InventoryController : MonoBehaviour
         buttonUse.SetActive(false);
         Time.timeScale = 1f;
         buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
-        Debug.Log(PiedestalController.canPut1);
     }
 
     public void UseObject2(GameObject newSlot, ItemController data)
@@ -180,7 +179,6 @@ public class InventoryController : MonoBehaviour
         buttonUse.SetActive(false);
         Time.timeScale = 1f;
         buttonUse.GetComponent<Button>().onClick.RemoveAllListeners();
-        Debug.Log(PiedestalController.canPut2);
     }
 
     private void SetMaskableGraphicValue(ref MaskableGraphic mg, object value)
