@@ -101,16 +101,14 @@ namespace _3CFeel.Controller
 
 
 
-                    pm.staticFriction = 3f;
-                    pm.dynamicFriction = 3f;
+                    
                 }
                 
                   
             }
             else
             {
-                pm.staticFriction = 0.6f;
-                pm.dynamicFriction = 0.05f;
+              
             }
 
             // On récupère un objet
@@ -176,6 +174,17 @@ namespace _3CFeel.Controller
             rb.AddForce(forceDirection, ForceMode.Impulse);
             forceDirection = Vector3.zero;
 
+            if(move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
+            {
+                if(Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
+                {
+                    rb.velocity -= new Vector3(0.02f, 0.02f, 0.02f) * Time.fixedDeltaTime;
+                }
+              
+
+
+            }
+
             if (rb.velocity.y < 0f)
             {
                 rb.velocity += Vector3.down * (Physics.gravity.y * -2f) * Time.fixedDeltaTime;
@@ -192,16 +201,16 @@ namespace _3CFeel.Controller
             if (OnSlope() && !exitingSlope)
             {
                 Debug.Log("OnSlope");
-                rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 20f, ForceMode.Force);
-                rb.drag = 1f;
+                rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 10f, ForceMode.Force);
+               
 
-                pm.staticFriction = 1f;
-                pm.dynamicFriction = 1f;
+                
                 hasExited = true;
 
                 if(rb.velocity.y > 0 && IsGrounded() == false)
                 {
-                    rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                    rb.AddForce(Vector3.down * 1f, ForceMode.Force);
+                    Debug.Log("GoDown");
                 }
             }
             else
