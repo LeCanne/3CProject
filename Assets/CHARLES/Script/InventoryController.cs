@@ -20,14 +20,15 @@ public class InventoryController : MonoBehaviour
     public ItemController theItem;
     public GameObject theNewSlot;
 
-    //public GameObject content;
-    //public Sprite sp1, sp2;
-    //public static bool haveButton;
+    public GameObject content;
+    public Sprite sp1, sp2;
+    public static bool haveButton;
 
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
     [SerializeField] MaskableGraphic txtInfoCaption;
     [SerializeField] MaskableGraphic imgInfoCaption;
+    [SerializeField] Image imgInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -50,23 +51,23 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        //if (!content.GetComponentInChildren<SlotController>())
-        //{
-        //    RefreshInfo();
-        //}
-        
-        //if (content.GetComponentInChildren<SlotController>().imgItem == sp1 && PiedestalController.canPut1 && haveButton
-        //    || content.GetComponentInChildren<SlotController>().imgItem == sp1 && PiedestalController.canPut2 && haveButton
-        //    || content.GetComponentInChildren<SlotController>().imgItem == sp2 && PiedestalController.canPut1 && haveButton
-        //    || content.GetComponentInChildren<SlotController>().imgItem == sp2 && PiedestalController.canPut2 && haveButton)
-        //{
-        //    buttonUse.SetActive(true);
-        //    haveButton = false;
-        //}
-        //else
-        //{
-        //    haveButton = false;
-        //}
+        if (content.GetComponentInChildren<SlotController>().gameObject == null)
+        {
+            RefreshInfo();
+        }
+
+        if (imgInfo.sprite == sp1 && PiedestalController.canPut1 && haveButton
+            || imgInfo.sprite == sp1 && PiedestalController.canPut2 && haveButton
+            || imgInfo.sprite == sp2 && PiedestalController.canPut1 && haveButton
+            || imgInfo.sprite == sp2 && PiedestalController.canPut2 && haveButton)
+        {
+            buttonUse.SetActive(true);
+            haveButton = false;
+        }
+        else
+        {
+            haveButton = false;
+        }
     }
 
     public void AddSlot(ItemController item)
@@ -104,6 +105,7 @@ public class InventoryController : MonoBehaviour
     {
         if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut1 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut1)
         {
+            content = data.gameObject;
             canUse = true;
             theItem = data;
             theNewSlot = newSlot;
@@ -113,6 +115,7 @@ public class InventoryController : MonoBehaviour
         }
         else if (data.category == ItemController.CATEGORY.IMPORTANT1 && PiedestalController.canPut2 || data.category == ItemController.CATEGORY.IMPORTANT2 && PiedestalController.canPut2)
         {
+            content = data.gameObject;
             canUse = true;
             theItem = data;
             theNewSlot = newSlot;
@@ -189,7 +192,7 @@ public class InventoryController : MonoBehaviour
             case Text txt: txt.text = value.ToString(); break;
 
 
-            case Image img: img.sprite = value as Sprite; break;
+            case Image img: img.sprite = value as Sprite; imgInfo = img; break;
             case RawImage img: img.texture = value as Texture; break;
         }
     }
@@ -203,7 +206,7 @@ public class InventoryController : MonoBehaviour
             case Text txt: txt.text = ""; break;
 
 
-            case Image img: img.sprite = null; break;
+            case Image img: img.sprite = null; imgInfo = null; break;
             case RawImage img: img.texture = null; break;
         }
     }

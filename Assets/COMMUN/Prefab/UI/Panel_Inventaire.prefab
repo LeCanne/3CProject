@@ -360,6 +360,9 @@ MonoBehaviour:
   buttonUse: {fileID: 3152694924202177916}
   theItem: {fileID: 0}
   theNewSlot: {fileID: 0}
+  content: {fileID: 5848238381391255461}
+  sp1: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  sp2: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   txtTitleInfo: {fileID: 1081542642270437827}
   txtInfoCaption: {fileID: 2701628268666706147}
   imgInfoCaption: {fileID: 1559156286427770368}

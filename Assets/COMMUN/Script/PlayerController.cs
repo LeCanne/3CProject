@@ -89,6 +89,7 @@ namespace _3CFeel.Controller
             {
                 CameraController.noUseCamera = false;
                 panelInventaire.SetActive(false);
+                theInventory.buttonUse.SetActive(false);
                 Time.timeScale = 1f;
             }
 
@@ -142,6 +143,8 @@ namespace _3CFeel.Controller
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
                 Time.timeScale = 0f;
+
+                InventoryController.haveButton = true;
 
                 if (content.GetComponentInChildren<Button>())
                     EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);

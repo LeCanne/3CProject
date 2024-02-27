@@ -135,6 +135,7 @@ public class PiedestalController : MonoBehaviour
         if (other.CompareTag("Player") && !havePut1 || other.CompareTag("Player") && !havePut2)
         {
             canPut1 = false;
+            canPut2 = false;
             StartCoroutine(PutobjectOf());
         }
     }
