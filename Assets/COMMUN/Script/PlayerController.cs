@@ -73,7 +73,7 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-            Debug.Log(rb.velocity);
+            
             // Boutons pour ouvrir/fermer l'inventaire
             if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
             { 
@@ -177,24 +177,24 @@ namespace _3CFeel.Controller
             rb.AddForce(forceDirection, ForceMode.Impulse);
             forceDirection = Vector3.zero;
 
-            //if(move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
-            //{
-            //    if(Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
-            //    {
+            if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
+            {
+                if (Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
+                {
+
                     
-            //        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 1);
-            //        rb.drag = 1;
-            //    }
-              
+                    rb.drag = 6;
+                }
 
 
-            //}
-            //else
-            //{
-            //    rb.drag = 0;
-            //}
 
-            if (rb.velocity.y < 0f)
+            }
+            else
+            {
+                rb.drag = 0;
+            }
+
+            if (rb.velocity.y < 0f && !OnSlope())
             {
                 rb.velocity += Vector3.down * (Physics.gravity.y * -2f) * Time.fixedDeltaTime;
             }
