@@ -19,6 +19,8 @@ public class DallesController : MonoBehaviour
 
     private bool haveWin, haveLose;
 
+    public GameObject barrière;
+
     private void Awake()
     {
         mainMesh = GetComponent<MeshRenderer>();
@@ -70,6 +72,7 @@ public class DallesController : MonoBehaviour
 
             if (categories == CATEGORY.FINALE && !haveWin && !haveLose)
             {
+                barrière.SetActive(false);
                 foreach (var dalle in dallesArray)
                 {
                     dalle.mainMesh.material = matBlue;

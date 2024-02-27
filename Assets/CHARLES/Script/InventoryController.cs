@@ -20,6 +20,10 @@ public class InventoryController : MonoBehaviour
     public ItemController theItem;
     public GameObject theNewSlot;
 
+    //public GameObject content;
+    //public Sprite sp1, sp2;
+    //public static bool haveButton;
+
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
     [SerializeField] MaskableGraphic txtInfoCaption;
@@ -45,6 +49,24 @@ public class InventoryController : MonoBehaviour
                 UseObject2(theNewSlot, theItem);
             }
         }
+
+        //if (!content.GetComponentInChildren<SlotController>())
+        //{
+        //    RefreshInfo();
+        //}
+        
+        //if (content.GetComponentInChildren<SlotController>().imgItem == sp1 && PiedestalController.canPut1 && haveButton
+        //    || content.GetComponentInChildren<SlotController>().imgItem == sp1 && PiedestalController.canPut2 && haveButton
+        //    || content.GetComponentInChildren<SlotController>().imgItem == sp2 && PiedestalController.canPut1 && haveButton
+        //    || content.GetComponentInChildren<SlotController>().imgItem == sp2 && PiedestalController.canPut2 && haveButton)
+        //{
+        //    buttonUse.SetActive(true);
+        //    haveButton = false;
+        //}
+        //else
+        //{
+        //    haveButton = false;
+        //}
     }
 
     public void AddSlot(ItemController item)
