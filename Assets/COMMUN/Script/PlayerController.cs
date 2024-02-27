@@ -73,6 +73,7 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
+            Debug.Log(rb.velocity);
             // Boutons pour ouvrir/fermer l'inventaire
             if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
             { 
@@ -98,17 +99,19 @@ namespace _3CFeel.Controller
                 if (OnSlope() == false)
                 {
 
+                    pm.staticFriction = 0f;
+                    pm.dynamicFriction = 0f;
 
 
 
-                    
                 }
                 
                   
             }
             else
             {
-              
+                pm.staticFriction = 0.6f;
+                pm.dynamicFriction = 0.05f;
             }
 
             // On récupère un objet
@@ -174,16 +177,22 @@ namespace _3CFeel.Controller
             rb.AddForce(forceDirection, ForceMode.Impulse);
             forceDirection = Vector3.zero;
 
-            if(move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
-            {
-                if(Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
-                {
-                    rb.velocity -= new Vector3(0.02f, 0.02f, 0.02f) * Time.fixedDeltaTime;
-                }
+            //if(move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
+            //{
+            //    if(Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
+            //    {
+                    
+            //        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 1);
+            //        rb.drag = 1;
+            //    }
               
 
 
-            }
+            //}
+            //else
+            //{
+            //    rb.drag = 0;
+            //}
 
             if (rb.velocity.y < 0f)
             {
@@ -201,9 +210,13 @@ namespace _3CFeel.Controller
             if (OnSlope() && !exitingSlope)
             {
                 Debug.Log("OnSlope");
-                rb.AddForce(GetSlopeMoveDirection() * MaxSpeed * 10f, ForceMode.Force);
-               
+                rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
 
+                if (rb.velocity.y > 0)
+                {
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10);
+                }
+               
                 
                 hasExited = true;
 
@@ -218,10 +231,11 @@ namespace _3CFeel.Controller
 
                 if(hasExited == true)
                 {
-                    rb.AddForce(Vector3.down * 80, ForceMode.Impulse);
+                    rb.AddForce(Vector3.down * 20, ForceMode.Impulse);
                     hasExited = false;
+                    Debug.Log("GoDownAgain");
                 }
-                rb.drag = 0f;
+                
             }
 
             // Rester sur la pente sans glisser
@@ -258,7 +272,7 @@ namespace _3CFeel.Controller
         private bool IsGrounded()
         {
             Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
-            if (Physics.Raycast(ray, out RaycastHit hit, 1f))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1.3f))
             {
                 Debug.Log("Detect");
                 return true;
