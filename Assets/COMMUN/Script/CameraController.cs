@@ -48,9 +48,9 @@ public class CameraController : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
 
-            if (Physics.Linecast(transform.position, transform.position + transform.localRotation * camera_offset, out hit) && inclose == false)
+            if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
             {
-                t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point));
+                t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point + t_camera.transform.forward));
             }
             else
             {

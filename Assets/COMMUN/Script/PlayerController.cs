@@ -21,6 +21,7 @@ namespace _3CFeel.Controller
         CapsuleCollider capCollider;
         public PhysicMaterial pm;
 
+
         public GameObject panelInventaire;
         public GameObject content;
 
@@ -30,6 +31,7 @@ namespace _3CFeel.Controller
         private Vector3 forceDirection = Vector3.zero;
         private float movementForce = 1f;
         public float jumpForce = 5f;
+        public GameObject skin;
 
         [Header("AttachedElements")]
         public Camera Camera;
@@ -177,10 +179,21 @@ namespace _3CFeel.Controller
 
         public void OnMove()
         {
+
+
+            
+         
+
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
 
             rb.AddForce(forceDirection, ForceMode.Impulse);
+            if (forceDirection != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(forceDirection, Vector3.up);
+                skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
+
+            }
             forceDirection = Vector3.zero;
             anim.SetBool("IsMoving", rb.velocity.x >= 0.1f || rb.velocity.z >= 0.1f);
 
