@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -51,6 +52,8 @@ namespace _3CFeel.Controller
         private bool hasExited;
 
         Vector3 moveDirection;
+
+        public Animator anim;
 
         private void Awake()
         {
@@ -179,6 +182,7 @@ namespace _3CFeel.Controller
 
             rb.AddForce(forceDirection, ForceMode.Impulse);
             forceDirection = Vector3.zero;
+            anim.SetBool("IsMoving", rb.velocity.x >= 0.1f || rb.velocity.z >= 0.1f);
 
             if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
             {
@@ -206,7 +210,7 @@ namespace _3CFeel.Controller
             horizontalVelocity.y = 0;
             if (horizontalVelocity.sqrMagnitude > MaxSpeed * MaxSpeed)
             {
-                rb.velocity = horizontalVelocity.normalized * MaxSpeed + Vector3.up * rb.velocity.y;
+                rb.velocity = horizontalVelocity.normalized * MaxSpeed + Vector3.up * rb.velocity.y;  
             }
 
             // Quand on est sur la pente
