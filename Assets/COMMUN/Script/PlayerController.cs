@@ -78,7 +78,10 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-            
+            anim.SetFloat("VelocityX", rb.velocity.x);
+            anim.SetFloat("VelocityZ", rb.velocity.z);
+
+
             // Boutons pour ouvrir/fermer l'inventaire
             if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
             { 
@@ -180,8 +183,6 @@ namespace _3CFeel.Controller
         public void OnMove()
         {
 
-
-            
          
 
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
@@ -195,7 +196,7 @@ namespace _3CFeel.Controller
                 
             }
             forceDirection = Vector3.zero;
-            anim.SetBool("IsMoving", rb.velocity.x >= 0.1f || rb.velocity.z >= 0.1f);
+            
 
             if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0 && IsGrounded() == true)
             {

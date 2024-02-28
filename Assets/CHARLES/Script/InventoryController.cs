@@ -23,6 +23,7 @@ public class InventoryController : MonoBehaviour
     public GameObject content;
     public Sprite sp1, sp2;
     public static bool haveButton;
+    public static bool noUseInventory;
 
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
