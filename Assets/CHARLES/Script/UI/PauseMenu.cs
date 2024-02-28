@@ -60,7 +60,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         gamIsPaused = false;
-
+        pauseMenuUI.SetActive(false);
+        CameraController.noUseCamera = false;
         /*SceneManager.LoadScene("menueStart")*/
         ;
     }
