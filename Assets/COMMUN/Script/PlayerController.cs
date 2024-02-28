@@ -192,12 +192,12 @@ namespace _3CFeel.Controller
             {
                 Quaternion toRotation = Quaternion.LookRotation(forceDirection, Vector3.up);
                 skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
-
+                
             }
             forceDirection = Vector3.zero;
             anim.SetBool("IsMoving", rb.velocity.x >= 0.1f || rb.velocity.z >= 0.1f);
 
-            if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0)
+            if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0 && IsGrounded() == true)
             {
                 if (Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
                 {

@@ -187,6 +187,11 @@ PrefabInstance:
       objectReference: {fileID: 209718367}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
+      propertyPath: skin
+      value: 
+      objectReference: {fileID: 209718366}
+    - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 724568870}
@@ -655,7 +660,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f641395bb81b9a74190c702fd196b589, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
