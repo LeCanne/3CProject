@@ -61,7 +61,7 @@ namespace _3CFeel.Controller
         {
             inputActions = new();
             move = inputActions.Gameplay.Move;
-            jump = inputActions.Gameplay.Jump;
+           // jump = inputActions.Gameplay.Jump;
             rb = GetComponent<Rigidbody>();
             capCollider = GetComponent<CapsuleCollider>();
 
@@ -78,6 +78,7 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
+          
             anim.SetFloat("VelocityX", rb.velocity.x);
             anim.SetFloat("VelocityZ", rb.velocity.z);
 
@@ -168,7 +169,7 @@ namespace _3CFeel.Controller
         {
             move.Enable();
 
-            inputActions.Gameplay.Jump.started += DoJump;
+            //inputActions.Gameplay.Jump.started += DoJump;
             inputActions.Gameplay.Enable();
         }
 
@@ -233,12 +234,25 @@ namespace _3CFeel.Controller
             if (OnSlope() && !exitingSlope)
             {
                 Debug.Log("OnSlope");
+                Debug.Log(GetSlopeMoveDirection());
                 rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
+               
 
                 if (rb.velocity.y > 0)
                 {
                     rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10);
+
                 }
+                if(rb.velocity.y < 0)
+                {
+                    Debug.Log(rb.velocity.y);
+                    float yVel = rb.velocity.y;
+                    yVel = Mathf.Clamp(yVel, -6f, 0f);
+                    
+                    rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
+                }
+                
+               
                
                 
                 hasExited = true;
@@ -252,13 +266,13 @@ namespace _3CFeel.Controller
             else
             {
 
-                if(hasExited == true)
+                if (hasExited == true)
                 {
-                    rb.AddForce(Vector3.down * 20, ForceMode.Impulse);
+                    rb.AddForce(Vector3.down * 10, ForceMode.Impulse);
                     hasExited = false;
                     Debug.Log("GoDownAgain");
                 }
-                
+
             }
 
             // Rester sur la pente sans glisser
@@ -297,12 +311,12 @@ namespace _3CFeel.Controller
             Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit, 1.3f))
             {
-                Debug.Log("Detect");
+              
                 return true;
             }
             else
             {
-                Debug.Log("Nope");
+               
                 return false;
             }
         }
@@ -321,7 +335,9 @@ namespace _3CFeel.Controller
 
         private Vector3 GetSlopeMoveDirection()
         {
-            return Vector3.ProjectOnPlane(forceDirection, slopeHit.normal).normalized;
+            
+            return Vector3.ProjectOnPlane(forceDirection, slopeHit.normal);
+            
         }
 
         private void OnTriggerEnter(Collider other)
