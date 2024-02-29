@@ -157,6 +157,7 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut1 = false;
         PiedestalController.havePut1 = true;
         CameraController.noUseCamera = false;
+        InventoryController.noUseInventory = false;
         canUse = false;
         theItem = null;
         theNewSlot = null;
@@ -173,6 +174,7 @@ public class InventoryController : MonoBehaviour
         PiedestalController.canPut2 = false;
         PiedestalController.havePut2 = true;
         CameraController.noUseCamera = false;
+        InventoryController.noUseInventory = false;
         canUse = false;
         theItem = null;
         theNewSlot = null;
