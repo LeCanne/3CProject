@@ -26,6 +26,7 @@ public class PiedestalController : MonoBehaviour
     public TextMeshProUGUI txtTakeObject;
     public static bool canPut1, havePut1;
     public static bool canPut2, havePut2;
+    public static bool clear1, clear2;
 
     // On ajoute l'objet qu'on a sélectionne depuis l'inventaire en donnant ses données
     public void PutObject(ItemController data)
@@ -63,11 +64,13 @@ public class PiedestalController : MonoBehaviour
         if (category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1)
         {
             newItem.GetComponent<SphereCollider>().enabled = false;
+            clear1 = true;
         }
 
         if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2)
         {
             newItem.GetComponent<SphereCollider>().enabled = false;
+            clear2 = true;
         }
     }
 

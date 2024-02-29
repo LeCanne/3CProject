@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(idScene);
         Time.timeScale = 1.0f;
+
+        PiedestalController.clear1 = false;
+        PiedestalController.clear2 = false;
+        PiedestalController.canPut1 = false;
+        PiedestalController.canPut1 = false;
     }
 
     public void QuitGame()
