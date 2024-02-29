@@ -35,6 +35,7 @@ public class PiedestalController : MonoBehaviour
 
         GameObject newItem = Instantiate(prefabItem);
         newItem.transform.position = trPlacement.position;
+        newItem.transform.parent = gameObject.transform;
 
         newItem.GetComponent<ItemController>().category = data.category;
         newItem.GetComponent<ItemController>().takeObject = takeObject;

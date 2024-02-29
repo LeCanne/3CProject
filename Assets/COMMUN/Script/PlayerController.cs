@@ -87,6 +87,7 @@ namespace _3CFeel.Controller
             if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
             { 
                 CameraController.noUseCamera = true;
+                InventoryController.noUseInventory = true;
                 panelInventaire.SetActive(true);
                 Time.timeScale = 0f;
 
@@ -94,8 +95,9 @@ namespace _3CFeel.Controller
                     EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);
             }
             
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2") && InventoryController.noUseInventory)
             {
+                InventoryController.noUseInventory = false;
                 CameraController.noUseCamera = false;
                 panelInventaire.SetActive(false);
                 theInventory.buttonUse.SetActive(false);
@@ -147,13 +149,14 @@ namespace _3CFeel.Controller
             }
 
             // On ouvre l'inventaire pour déposer un objet
-            if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 || Input.GetButtonDown("Fire3") && PiedestalController.canPut2)
+            if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 && !InventoryController.noUseInventory || Input.GetButtonDown("Fire3") && PiedestalController.canPut2 && !InventoryController.noUseInventory)
             {
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
                 Time.timeScale = 0f;
 
                 InventoryController.haveButton = true;
+                InventoryController.noUseInventory = true;
 
                 if (content.GetComponentInChildren<Button>())
                     EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);
