@@ -190,7 +190,9 @@ namespace _3CFeel.Controller
             rb.AddForce(forceDirection, ForceMode.Impulse);
             if (forceDirection != Vector3.zero)
             {
-                Quaternion toRotation = Quaternion.LookRotation(forceDirection, Vector3.up);
+                Vector3 direction = forceDirection;
+                direction.y = 0;
+                Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
                 skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
                 
             }
