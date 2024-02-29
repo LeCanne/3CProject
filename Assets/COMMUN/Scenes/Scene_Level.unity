@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: MaxSpeed
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
@@ -232,6 +232,11 @@ PrefabInstance:
       objectReference: {fileID: 1629865967}
     - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
+      propertyPath: closePos
+      value: 
+      objectReference: {fileID: 642367860}
+    - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
       propertyPath: t_camera
       value: 
       objectReference: {fileID: 724568871}
@@ -240,6 +245,11 @@ PrefabInstance:
       propertyPath: matShader
       value: 
       objectReference: {fileID: 2100000, guid: 43b7ec6a22f8a214ab0dd588d9a22662, type: 2}
+    - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: cameraState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: shaderFloat
@@ -269,6 +279,11 @@ PrefabInstance:
     - target: {fileID: 4539897465994965037, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671264580472387769, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6671264580472387769, guid: cd3531cfa1cfeb64999b63af749bc902,
@@ -2589,6 +2604,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &642367860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642367861}
+  m_Layer: 0
+  m_Name: CloseCamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642367861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642367860}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.163, y: 1.468, z: -0.042}
+  m_LocalScale: {x: 0.7692308, y: 0.7692308, z: 0.7692308}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 209718368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657819400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,6 +3724,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.5843798
       objectReference: {fileID: 0}
+    - target: {fileID: -7813590141776298306, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43b7ec6a22f8a214ab0dd588d9a22662, type: 2}
     - target: {fileID: -7219772299731422950, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4268,6 +4319,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.9556413
       objectReference: {fileID: 0}
+    - target: {fileID: 5822821947120931875, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43b7ec6a22f8a214ab0dd588d9a22662, type: 2}
     - target: {fileID: 6000407479487422213, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4420,7 +4476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642367861}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a3a7a3b55023c0e489e8b2db42a92bc9,
         type: 3}

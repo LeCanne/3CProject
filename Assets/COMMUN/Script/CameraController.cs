@@ -10,13 +10,15 @@ public class CameraController : MonoBehaviour
 
     public float minVerticalAngle = -45f;
     public float maxVerticalAngle = 45f;
-
+    
     public static bool noUseCamera;
     public bool inclose;
     public Transform t_camera;
     private Vector3 camera_offset;
+    private Vector3 OriginalPos;
     private Quaternion camRotation;
     private RaycastHit hit;
+    public GameObject closePos;
     public enum CAMERASTATES
     {
         DEFAULT,
@@ -31,6 +33,7 @@ public class CameraController : MonoBehaviour
     {
         camRotation = transform.localRotation;
         camera_offset = t_camera.localPosition;
+        OriginalPos = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -61,13 +64,15 @@ public class CameraController : MonoBehaviour
         if(cameraState == CAMERASTATES.DEFAULT)
         {
            camera_offset = new Vector3(0, 0, -5.2f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime / 0.3f);
             inclose = false;
             matShader.SetFloat("_SeeThroughDistance", 1.8f);
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
-            camera_offset = new Vector3(0.75f, 0, -1);
-            matShader.SetFloat("_SeeThroughDistance",0f);
+            transform.position = Vector3.Lerp(transform.position, closePos.transform.position, Time.deltaTime / 0.3f);
+            camera_offset = new Vector3(0f, 0, -1f);
+            matShader.SetFloat("_SeeThroughDistance",-0.5f);
         }
     }
 }

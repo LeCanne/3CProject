@@ -371,7 +371,7 @@ namespace _3CFeel.Controller
             if (other.CompareTag("DefaultCamera"))
             {
                 camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
-                MaxSpeed = 10;
+                MaxSpeed = 7;
             }
         }
 
