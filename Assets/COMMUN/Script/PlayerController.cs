@@ -236,9 +236,12 @@ namespace _3CFeel.Controller
             // Quand on est sur la pente
             if (OnSlope() && !exitingSlope)
             {
-                Debug.Log("OnSlope");
-                Debug.Log(GetSlopeMoveDirection());
-                rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
+                if(forceDirection != Vector3.zero)
+                {
+                    Debug.Log(GetSlopeMoveDirection());
+                    rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
+                }
+              
                
 
                 if (rb.velocity.y > 0)
@@ -250,15 +253,16 @@ namespace _3CFeel.Controller
                 {
                     Debug.Log(rb.velocity.y);
                     float yVel = rb.velocity.y;
-                    yVel = Mathf.Clamp(yVel, -6f, 0f);
+                    yVel = Mathf.Clamp(yVel, -10f, 0f);
                     
                     rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
                 }
                 
-               
-               
-                
-                hasExited = true;
+
+
+
+
+                    hasExited = true;
 
                 if(rb.velocity.y > 0 && IsGrounded() == false)
                 {
@@ -361,7 +365,7 @@ namespace _3CFeel.Controller
             if (other.CompareTag("CloseCamera"))
             {
                 camControl.cameraState = CameraController.CAMERASTATES.CLOSE;
-                MaxSpeed = 5;
+                MaxSpeed = 3;
             }
 
             if (other.CompareTag("DefaultCamera"))
