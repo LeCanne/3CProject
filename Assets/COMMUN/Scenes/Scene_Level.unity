@@ -171,6 +171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106181695677175680, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 106181695677175680, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -256,6 +261,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6465566751694194690, guid: bcc3ca0ee1a5f634a8f10da641a54f69,
         type: 3}
+    - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: maxVerticalAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: minVerticalAngle
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 3452270029855289214, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: m_Enabled
