@@ -201,6 +201,52 @@ namespace _3CFeel.Controller
                 skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
                 
             }
+            if (OnSlope() && !exitingSlope)
+            {
+                if (forceDirection != Vector3.zero)
+                {
+                    Debug.Log(GetSlopeMoveDirection());
+                    rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
+                }
+
+
+
+                if (rb.velocity.y > 0)
+                {
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10);
+
+                }
+                if (rb.velocity.y < 0)
+                {
+                    float yVel = rb.velocity.y;
+                    yVel = Mathf.Clamp(yVel, -10f, 0f);
+
+                    rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
+                }
+
+
+
+
+
+                hasExited = true;
+
+                if (rb.velocity.y > 0 && IsGrounded() == false)
+                {
+                    rb.AddForce(Vector3.down * 1f, ForceMode.Force);
+                    Debug.Log("GoDown");
+                }
+            }
+            else
+            {
+
+                if (hasExited == true)
+                {
+                    rb.AddForce(Vector3.down * (3.9f - GetSlopeMoveDirection().z / 2), ForceMode.Impulse);
+                    hasExited = false;
+                    Debug.Log("GoDownAgain");
+                }
+
+            }
             forceDirection = Vector3.zero;
             
 
@@ -234,53 +280,7 @@ namespace _3CFeel.Controller
             }
 
             // Quand on est sur la pente
-            if (OnSlope() && !exitingSlope)
-            {
-                if(forceDirection != Vector3.zero)
-                {
-                    Debug.Log(GetSlopeMoveDirection());
-                    rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
-                }
-              
-               
-
-                if (rb.velocity.y > 0)
-                {
-                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10);
-
-                }
-                if(rb.velocity.y < 0)
-                {
-                    Debug.Log(rb.velocity.y);
-                    float yVel = rb.velocity.y;
-                    yVel = Mathf.Clamp(yVel, -10f, 0f);
-                    
-                    rb.velocity = new Vector3(rb.velocity.x, yVel, rb.velocity.z);
-                }
-                
-
-
-
-
-                    hasExited = true;
-
-                if(rb.velocity.y > 0 && IsGrounded() == false)
-                {
-                    rb.AddForce(Vector3.down * 1f, ForceMode.Force);
-                    Debug.Log("GoDown");
-                }
-            }
-            else
-            {
-
-                if (hasExited == true)
-                {
-                    rb.AddForce(Vector3.down * 10, ForceMode.Impulse);
-                    hasExited = false;
-                    Debug.Log("GoDownAgain");
-                }
-
-            }
+          
 
             // Rester sur la pente sans glisser
             rb.useGravity = !OnSlope();
