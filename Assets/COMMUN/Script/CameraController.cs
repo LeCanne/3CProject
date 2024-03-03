@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     
 
     public float cameraSmoothingFactor = 1;
+    public float cameraSmoothingFactorY;
 
     public float minVerticalAngle = -45f;
     public float maxVerticalAngle = 45f;
@@ -34,6 +35,8 @@ public class CameraController : MonoBehaviour
         camRotation = transform.localRotation;
         camera_offset = t_camera.localPosition;
         OriginalPos = transform.localPosition;
+        cameraSmoothingFactorY = cameraSmoothingFactor;
+
     }
 
     // Update is called once per frame
@@ -42,14 +45,16 @@ public class CameraController : MonoBehaviour
 
         if (noUseCamera == false)
         {
-            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactor * (-1.5f);
+            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactorY * (-1.5f);
             camRotation.y += Input.GetAxis("Joystick X") * cameraSmoothingFactor * 1.5f;
 
-            camRotation.x += Input.GetAxis("Mouse Y") * cameraSmoothingFactor * (-1);
+            camRotation.x += Input.GetAxis("Mouse Y") * cameraSmoothingFactorY * (-1);
             camRotation.y += Input.GetAxis("Mouse X") * cameraSmoothingFactor;
 
             camRotation.x = Mathf.Clamp(camRotation.x, minVerticalAngle, maxVerticalAngle);
-
+            
+            
+            Debug.Log(cameraSmoothingFactor);
             transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
 
             if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
@@ -68,6 +73,12 @@ public class CameraController : MonoBehaviour
             transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime / 0.3f);
             inclose = false;
             matShader.SetFloat("_SeeThroughDistance", 1.8f);
+
+            //EquationAxeX
+            if (camRotation.x != 0)
+            {
+                cameraSmoothingFactor = 2 / (Mathf.Abs(camRotation.x) / 10 + 1);
+            }
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
