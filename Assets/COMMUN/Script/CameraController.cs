@@ -82,6 +82,7 @@ public class CameraController : MonoBehaviour
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
+            cameraSmoothingFactor = 1.3f
             transform.position = Vector3.Lerp(transform.position, closePos.transform.position, Time.deltaTime / 0.3f);
             camera_offset = new Vector3(0f, 0, -1f);
             matShader.SetFloat("_SeeThroughDistance",-0.5f);
