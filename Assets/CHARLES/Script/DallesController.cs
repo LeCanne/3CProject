@@ -19,7 +19,8 @@ public class DallesController : MonoBehaviour
 
     private bool haveWin, haveLose;
 
-    public GameObject barrière;
+    public GameObject door;
+    public float timerOpen;
 
     private void Awake()
     {
@@ -72,13 +73,28 @@ public class DallesController : MonoBehaviour
 
             if (categories == CATEGORY.FINALE && !haveWin && !haveLose)
             {
-                //barrière.SetActive(false);
+                StartCoroutine(OpenDoor());
+
                 foreach (var dalle in dallesArray)
                 {
                     dalle.mainMesh.material = matBlue;
                     dalle.haveWin = true;
                 }
             }
+        }
+    }
+
+    IEnumerator OpenDoor()
+    {
+        Vector3 startPosition = new Vector3(door.transform.position.x, door.transform.position.y, door.transform.position.z);
+        Vector3 endPosition = new Vector3(startPosition.x, door.transform.position.y + 10, startPosition.z);
+
+        while (timerOpen < 3)
+        {
+            timerOpen += Time.deltaTime;
+            door.transform.position = Vector3.Lerp(startPosition, endPosition, timerOpen / 3f);
+
+            yield return null;
         }
     }
 }
