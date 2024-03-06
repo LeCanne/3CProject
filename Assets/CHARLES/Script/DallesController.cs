@@ -69,6 +69,8 @@ public class DallesController : MonoBehaviour
                     dalle.mainMesh.material = matGrey;
                     dalle.haveLose = false;
                 }
+
+                dallesArray[24].mainMesh.material = matBlue;
             }
 
             if (categories == CATEGORY.FINALE && !haveWin && !haveLose)
