@@ -190,16 +190,17 @@ namespace _3CFeel.Controller
             anim.SetFloat("VelocityX", rb.velocity.x);
             anim.SetFloat("VelocityZ", rb.velocity.z);
             anim.SetFloat("TimeIdle", timerIdle);
+            anim.SetFloat("TimeFall", timerFall);
             anim.SetBool("IsFalling", isFall);
 
             if (rb.velocity.x != 0 ||  rb.velocity.z != 0) 
             {
-                timerIdle = 6;
+                timerIdle = 9;
             }
 
             if (rb.velocity.x == 0f && rb.velocity.z == 0f) 
             {
-                if (timerIdle > 6) 
+                if (timerIdle > 8) 
                 {
                     isTime = false;
                 }
