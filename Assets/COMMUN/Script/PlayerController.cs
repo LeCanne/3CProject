@@ -56,6 +56,8 @@ namespace _3CFeel.Controller
         Vector3 moveDirection;
 
         public Animator anim;
+        public float timerIdle, timerFall;
+        private bool isTime, isFall;
 
         private void Awake()
         {
@@ -78,9 +80,8 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-          
-            anim.SetFloat("VelocityX", rb.velocity.x);
-            anim.SetFloat("VelocityZ", rb.velocity.z);
+
+            Animations();
 
 
             // Boutons pour ouvrir/fermer l'inventaire
@@ -182,6 +183,40 @@ namespace _3CFeel.Controller
 
             inputActions.Gameplay.Jump.started -= DoJump;
             inputActions.Gameplay.Disable();
+        }
+
+        public void Animations()
+        {
+            anim.SetFloat("VelocityX", rb.velocity.x);
+            anim.SetFloat("VelocityZ", rb.velocity.z);
+            anim.SetFloat("TimeIdle", timerIdle);
+            anim.SetBool("IsFalling", isFall);
+
+            if (rb.velocity.x != 0 ||  rb.velocity.z != 0) 
+            {
+                timerIdle = 6;
+            }
+
+            if (rb.velocity.x == 0f && rb.velocity.z == 0f) 
+            {
+                if (timerIdle > 6) 
+                {
+                    isTime = false;
+                }
+                else if (timerIdle <= 0)
+                {
+                    isTime= true;
+                }
+
+                if (isTime)
+                {
+                    timerIdle += Time.deltaTime;
+                }
+                else if (!isTime) 
+                {
+                    timerIdle = 0;
+                }
+            }
         }
 
         public void OnMove()
@@ -318,12 +353,12 @@ namespace _3CFeel.Controller
             Ray ray = new Ray(this.transform.position + Vector3.up * -0.20f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit, 1.3f))
             {
-              
+                isFall = false;
                 return true;
             }
             else
             {
-               
+                isFall = true;
                 return false;
             }
         }

@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
 
         if (noUseCamera == false)
         {
-            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactorY * (-1.5f);
+            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactor * (-1.5f);
             camRotation.y += Input.GetAxis("Joystick X") * cameraSmoothingFactor * 1.5f;
 
             camRotation.x += Input.GetAxis("Mouse Y") * cameraSmoothingFactorY * (-1);
