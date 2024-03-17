@@ -218,6 +218,15 @@ namespace _3CFeel.Controller
                     timerIdle = 0;
                 }
             }
+
+            if (!IsGrounded())
+            {
+                timerFall += Time.deltaTime;
+            }
+            else
+            {
+                timerFall = 0;
+            }
         }
 
         public void OnMove()
