@@ -249,7 +249,7 @@ namespace _3CFeel.Controller
             {
                 if (forceDirection != Vector3.zero)
                 {
-                    Debug.Log(GetSlopeMoveDirection());
+                    
                     rb.AddForce(GetSlopeMoveDirection(), ForceMode.Force);
                 }
 

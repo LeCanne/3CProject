@@ -491,6 +491,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 547632623455770253, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
+      propertyPath: m_Height
+      value: 3.2063255
+      objectReference: {fileID: 0}
+    - target: {fileID: 547632623455770253, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.60316277
+      objectReference: {fileID: 0}
+    - target: {fileID: 547632623455770253, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 5d99f1b22fa67d24cbd46bb215f05301,
@@ -574,7 +584,7 @@ PrefabInstance:
     - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: speedjoystick
-      value: 50
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
@@ -11970,7 +11980,7 @@ PrefabInstance:
     - target: {fileID: 1652267650147968904, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.03527832
+      value: -0.03515625
       objectReference: {fileID: 0}
     - target: {fileID: 1652267650147968904, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
