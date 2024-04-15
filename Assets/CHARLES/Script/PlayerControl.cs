@@ -27,6 +27,7 @@ namespace _3CFeel.Controller
 
         [Header("AttachedElements")]
         public Camera Camera;
+        public Animator newAnimatorSetting;
 
         [Header("Script")]
         public ItemController item;
@@ -85,7 +86,8 @@ namespace _3CFeel.Controller
         public void OnMove()
         {
 
-
+            newAnimatorSetting.SetFloat("VelocityX", move.ReadValue<Vector2>().x);
+            newAnimatorSetting.SetFloat("VelocityZ", move.ReadValue<Vector2>().y);
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
 
