@@ -46,7 +46,6 @@ public class ItemController : MonoBehaviour
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
-                Debug.Log(label);
             }
 
             if (category == CATEGORY.NON_IMPORTANT2 && data.categories == ItemData.CATEGORY.NON_IMPORTANT2)
@@ -55,7 +54,6 @@ public class ItemController : MonoBehaviour
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
-                Debug.Log(label);
             }
 
             if (category == CATEGORY.NON_IMPORTANT3 && data.categories == ItemData.CATEGORY.NON_IMPORTANT3)
@@ -64,7 +62,6 @@ public class ItemController : MonoBehaviour
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
-                Debug.Log(label);
             }
 
             if (category == CATEGORY.IMPORTANT1 && data.categories == ItemData.CATEGORY.IMPORTANT1)
@@ -73,7 +70,6 @@ public class ItemController : MonoBehaviour
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
-                Debug.Log(label);
             }
 
             if (category == CATEGORY.IMPORTANT2 && data.categories == ItemData.CATEGORY.IMPORTANT2)
@@ -82,7 +78,6 @@ public class ItemController : MonoBehaviour
                 sp = data.icon;
                 label = data.label;
                 caption = data.caption;
-                Debug.Log(label);
             }
         }
     }
@@ -99,7 +94,6 @@ public class ItemController : MonoBehaviour
         canTake = false;
         theInventory.AddSlot(this);
         Destroy(gameObject);
-        Debug.Log(gameObject);
     }
 
     public IEnumerator TakeobjectOn()

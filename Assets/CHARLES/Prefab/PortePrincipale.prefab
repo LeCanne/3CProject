@@ -266,6 +266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Pi\xE9destal"
       objectReference: {fileID: 0}
+    - target: {fileID: 6427821127904210484, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8732080967364249182, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: m_Height
@@ -378,7 +383,12 @@ PrefabInstance:
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: category
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427821127904210484, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732080967364249182, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
