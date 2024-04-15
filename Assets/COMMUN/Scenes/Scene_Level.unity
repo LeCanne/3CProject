@@ -573,6 +573,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
+      propertyPath: speedjoystick
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074932396611157628, guid: cd3531cfa1cfeb64999b63af749bc902,
+        type: 3}
       propertyPath: maxVerticalAngle
       value: 80
       objectReference: {fileID: 0}

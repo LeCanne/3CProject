@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -20,6 +21,8 @@ public class CameraController : MonoBehaviour
     private Quaternion camRotation;
     private RaycastHit hit;
     public GameObject closePos;
+
+    public float speedjoystick;
     public enum CAMERASTATES
     {
         DEFAULT,
@@ -45,8 +48,8 @@ public class CameraController : MonoBehaviour
 
         if (noUseCamera == false)
         {
-            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactor * (-1.5f);
-            camRotation.y += Input.GetAxis("Joystick X") * cameraSmoothingFactor * 1.5f;
+            camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactorY * -speedjoystick;
+            camRotation.y += Input.GetAxis("Joystick X") * cameraSmoothingFactor * speedjoystick;
 
             camRotation.x += Input.GetAxis("Mouse Y") * cameraSmoothingFactorY * (-1);
             camRotation.y += Input.GetAxis("Mouse X") * cameraSmoothingFactor;
@@ -54,7 +57,7 @@ public class CameraController : MonoBehaviour
             camRotation.x = Mathf.Clamp(camRotation.x, minVerticalAngle, maxVerticalAngle);
             
             
-            Debug.Log(cameraSmoothingFactor);
+            
             transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
 
             if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
