@@ -501,6 +501,12 @@ MonoBehaviour:
   content: {fileID: 5848238381391255461}
   sp1: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   sp2: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  blur: {fileID: 0}
+  volume: {fileID: 0}
+  cfp:
+    m_OverrideState: 0
+    m_Value: 0
+  timerBlur: 0
   txtTitleInfo: {fileID: 1081542642270437827}
   txtInfoCaption: {fileID: 2701628268666706147}
   imgInfoCaption: {fileID: 1559156286427770368}
@@ -517,7 +523,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5c05e1a17552a2c4e982c5e63efaca70, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

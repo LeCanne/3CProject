@@ -16,6 +16,7 @@ public class DallesController : MonoBehaviour
     public Material matBlue, matRed, matGrey;
 
     public DallesController[] dallesArray;
+    public int nbDalles;
 
     private bool haveWin, haveLose;
 

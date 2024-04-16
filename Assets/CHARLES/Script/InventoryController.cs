@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
@@ -25,6 +27,12 @@ public class InventoryController : MonoBehaviour
     public static bool haveButton;
     public static bool noUseInventory;
 
+    public DepthOfField blur;
+    public Volume volume;
+    public ClampedFloatParameter cfp;
+
+    public float timerBlur;
+
     [Header("Info")]
     [SerializeField] MaskableGraphic txtTitleInfo;
     [SerializeField] MaskableGraphic txtInfoCaption;
@@ -32,9 +40,13 @@ public class InventoryController : MonoBehaviour
     [SerializeField] Image imgInfo;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        DepthOfField dof;
+        if (volume.profile.TryGet<DepthOfField>(out dof))
+        {
+            blur = dof;
+        }
     }
 
     // Update is called once per frame
@@ -52,23 +64,48 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        if (content.GetComponentInChildren<SlotController>().gameObject == null)
+        if (content.transform.childCount > 0)
         {
-            RefreshInfo();
-        }
+            if (content.GetComponentInChildren<SlotController>().gameObject == null)
+            {
+                RefreshInfo();
+            }
 
-        if (imgInfo.sprite == sp1 && PiedestalController.canPut1 && haveButton
+            if (imgInfo.sprite == sp1 && PiedestalController.canPut1 && haveButton
             || imgInfo.sprite == sp1 && PiedestalController.canPut2 && haveButton
             || imgInfo.sprite == sp2 && PiedestalController.canPut1 && haveButton
             || imgInfo.sprite == sp2 && PiedestalController.canPut2 && haveButton)
-        {
-            buttonUse.SetActive(true);
-            haveButton = false;
+            {
+                buttonUse.SetActive(true);
+                haveButton = false;
+            }
+            else
+            {
+                haveButton = false;
+            }
         }
-        else
+    }
+
+    public IEnumerator DoBlur()
+    {
+        timerBlur = 0f;
+        DepthOfField startBlur = blur;
+        startBlur.focalLength.value = 1;
+        DepthOfField endBlur = blur;
+        endBlur.focalLength.value = 20;
+
+        while (timerBlur < 0.5f)
         {
-            haveButton = false;
+            timerBlur += Time.deltaTime;
+            blur.focalLength.value = Mathf.Lerp(1, 40, timerBlur / 0.5f);
+
+            yield return null;
         }
+    }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0f;
     }
 
     public void AddSlot(ItemController item)
