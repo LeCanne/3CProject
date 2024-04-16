@@ -5610,6 +5610,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thePlayer: {fileID: 153160258}
   pauseMenuUI: {fileID: 787544861}
+  blur: {fileID: 0}
+  volume: {fileID: 0}
+  cfp:
+    m_OverrideState: 0
+    m_Value: 0
+  timerBlur: 0
 --- !u!1 &542166916
 GameObject:
   m_ObjectHideFlags: 0
@@ -15601,6 +15607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854671176034419066, guid: 8e6e507ade88c6845be88f7f83a39a20,
+        type: 3}
+      propertyPath: category
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2854671176034419066, guid: 8e6e507ade88c6845be88f7f83a39a20,
         type: 3}
