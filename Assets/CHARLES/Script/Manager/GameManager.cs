@@ -3,15 +3,70 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using _3CFeel.Controller;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject panelMainMenu;
-    public GameObject panelPause;
+    public GameObject pauseMenuUI;
+
+    public PlayerController thePlayer;
+
+    public static bool gamIsPaused = false;
 
     private void Start()
     {
         EventSystem.current.SetSelectedGameObject(panelMainMenu.transform.GetChild(0).gameObject);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //blur.focalLength = new ClampedFloatParameter(1, 0, 300);
+
+        if (Input.GetButtonDown("Cancel") && !InventoryController.noUseInventory)
+        {
+
+            if (gamIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        CameraController.noUseCamera = false;
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gamIsPaused = false;
+
+        //thePlayer.isDead = false;
+    }
+
+    public void Pause()
+    {
+        CameraController.noUseCamera = true;
+        pauseMenuUI.SetActive(true);
+        gamIsPaused = true;
+        EventSystem.current.SetSelectedGameObject(pauseMenuUI.transform.GetChild(1).gameObject);
+        //thePlayer.isDead = true;
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        gamIsPaused = false;
+        pauseMenuUI.SetActive(false);
+        CameraController.noUseCamera = false;
+        /*SceneManager.LoadScene("menueStart")*/
+        ;
     }
 
     public void MyLoadScene(int idScene)
