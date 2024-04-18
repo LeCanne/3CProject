@@ -19,7 +19,7 @@ namespace _3CFeel.Controller
         Rigidbody rb;
         CapsuleCollider capCollider;
         public PhysicMaterial pm;
-
+        public GameObject spine;
 
         public GameObject panelInventaire;
         public GameObject content;
@@ -79,7 +79,8 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-
+            skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+            skin.transform.localPosition = new Vector3(0, 0.6f, 0);
             Animations();
 
 
@@ -238,8 +239,11 @@ namespace _3CFeel.Controller
             rb.AddForce(forceDirection, ForceMode.Impulse);
             if (forceDirection != Vector3.zero)
             {
+                Debug.Log("doingthat");
                 Vector3 direction = forceDirection;
                 direction.y = 0;
+                skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+               
                 Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
                 skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
                 
