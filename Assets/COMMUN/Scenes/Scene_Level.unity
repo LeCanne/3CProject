@@ -514,12 +514,12 @@ PrefabInstance:
         type: 3}
       propertyPath: skin
       value: 
-      objectReference: {fileID: 778164479630114307}
+      objectReference: {fileID: 1526401402}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: spine
       value: 
-      objectReference: {fileID: 285411814497389899}
+      objectReference: {fileID: 778164479630114307}
     - target: {fileID: 740519033786433176, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       propertyPath: Camera
@@ -696,7 +696,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7977430230634569424, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 110136792130102457}
+      addedObject: {fileID: 1526401403}
     - targetCorrespondingSourceObject: {fileID: 4539897465994965037, guid: cd3531cfa1cfeb64999b63af749bc902,
         type: 3}
       insertIndex: -1
@@ -15897,6 +15897,38 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1078448550}
   m_SourcePrefab: {fileID: 100100000, guid: 8e6e507ade88c6845be88f7f83a39a20, type: 3}
+--- !u!1 &1526401402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526401403}
+  m_Layer: 2
+  m_Name: SkinRotater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526401403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526401402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 110136792130102457}
+  m_Father: {fileID: 145645849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550592800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2468430099578900219, guid: 26b619ac9f2e4b24681b6d9b9c0c0977,
@@ -27382,8 +27414,8 @@ Transform:
   m_GameObject: {fileID: 778164479630114307}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: -0.00000071525574, y: 0.57235336, z: 0.17863464}
-  m_LocalScale: {x: 0.37, y: 0.37, z: 0.37}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.37000003, y: 0.37, z: 0.37000003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3325088100065234611}
@@ -27424,8 +27456,8 @@ Transform:
   - {fileID: 2499665143992047622}
   - {fileID: 1306289903683065381}
   - {fileID: 642367861}
-  m_Father: {fileID: 145645849}
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_Father: {fileID: 1526401403}
+  m_LocalEulerAnglesHint: {x: -75.71555, y: -37.367958, z: 37.2776}
 --- !u!1 &113066430027847402
 GameObject:
   m_ObjectHideFlags: 0
@@ -27951,7 +27983,6 @@ GameObject:
   m_Component:
   - component: {fileID: 110136792130102457}
   - component: {fileID: 778164479630114308}
-  - component: {fileID: 778164479630114309}
   m_Layer: 0
   m_Name: Perso_rendu
   m_TagString: Untagged
@@ -27972,7 +28003,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f641395bb81b9a74190c702fd196b589, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -27980,33 +28011,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &778164479630114309
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778164479630114307}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 64
-  m_CollisionDetection: 0
 --- !u!4 &798684224541572203
 Transform:
   m_ObjectHideFlags: 0
@@ -29232,7 +29236,7 @@ Transform:
   m_Children:
   - {fileID: 190469905570070045}
   m_Father: {fileID: 6027217860133553319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 71.95822, y: -50.33135, z: -58.788876}
 --- !u!1 &1616043284552138768
 GameObject:
   m_ObjectHideFlags: 0
@@ -32158,7 +32162,7 @@ Transform:
   - {fileID: 6362013255099861130}
   - {fileID: 1028709208364506092}
   m_Father: {fileID: 6027217860133553319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.453209, y: 12.133159, z: 1.1526023}
 --- !u!1 &3851677171491710091
 GameObject:
   m_ObjectHideFlags: 0
@@ -34588,7 +34592,7 @@ Transform:
   - {fileID: 3789616152772204078}
   - {fileID: 1969403230367033402}
   m_Father: {fileID: 110136792130102457}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 78.6874, y: 180, z: 180}
 --- !u!4 &5566782157400191139
 Transform:
   m_ObjectHideFlags: 0
@@ -35111,7 +35115,7 @@ Transform:
   - {fileID: 3843079402354880173}
   - {fileID: 1595084522793943248}
   m_Father: {fileID: 7888137170751855336}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.30083662, y: -10.210942, z: -5.876484}
 --- !u!4 &6029814846837429693
 Transform:
   m_ObjectHideFlags: 0
@@ -37043,7 +37047,7 @@ Transform:
   - {fileID: 6027217860133553319}
   - {fileID: 3013942218610593124}
   m_Father: {fileID: 5537298861563005783}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.731529, y: -0.25919008, z: -7.407079}
 --- !u!4 &7919567338058299899
 Transform:
   m_ObjectHideFlags: 0

@@ -79,8 +79,9 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-            skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+            skin.transform.eulerAngles = new Vector3(0, skin.transform.eulerAngles.y, 0);
             skin.transform.localPosition = new Vector3(0, 0.6f, 0);
+            spine.transform.localPosition = Vector3.zero;
             Animations();
 
 
