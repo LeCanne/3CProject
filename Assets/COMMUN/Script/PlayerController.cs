@@ -236,17 +236,18 @@ namespace _3CFeel.Controller
 
             forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
-
+            
             rb.AddForce(forceDirection, ForceMode.Impulse);
             if (forceDirection != Vector3.zero)
             {
                 Debug.Log("doingthat");
                 Vector3 direction = forceDirection;
+                Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+                skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.06f);
                 direction.y = 0;
                 skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
                
-                Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-                skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.2f);
+               
                 
             }
             if (OnSlope() && !exitingSlope)
@@ -304,7 +305,7 @@ namespace _3CFeel.Controller
                 {
 
                     
-                    rb.drag = 6;
+                    rb.drag = 8;
                 }
 
 
@@ -312,7 +313,16 @@ namespace _3CFeel.Controller
             }
             else
             {
-                rb.drag = 0;
+                if(rb.velocity.magnitude > 5f)
+                {
+                    Debug.Log(rb.velocity.magnitude);
+                    rb.drag = 1.2f;
+                }
+                else
+                {
+                    rb.drag = 5;
+                }
+               
             }
 
             if (rb.velocity.y < 0f && !OnSlope())
