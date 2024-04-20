@@ -8,6 +8,7 @@ public class PiedestalController : MonoBehaviour
 {
     public ItemDatabase database;
     public InventoryController theInventory;
+    public AudioManager theAudio;
 
     public enum CATEGORY
     {
@@ -28,9 +29,16 @@ public class PiedestalController : MonoBehaviour
     public static bool canPut2, havePut2;
     public static bool clear1, clear2;
 
+    private void Awake()
+    {
+        theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
+
     // On ajoute l'objet qu'on a sélectionne depuis l'inventaire en donnant ses données
     public void PutObject(ItemController data)
     {
+        theAudio.Scrapping();
+
         putObject.SetActive(false);
 
         GameObject newItem = Instantiate(prefabItem);

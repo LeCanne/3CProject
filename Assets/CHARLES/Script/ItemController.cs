@@ -9,6 +9,7 @@ public class ItemController : MonoBehaviour
     public ItemDatabase database;
     public InventoryController theInventory;
     public PiedestalController piedestal;
+    private AudioManager theAudio;
 
     public enum CATEGORY
     {
@@ -32,7 +33,7 @@ public class ItemController : MonoBehaviour
 
     private void Awake()
     {
-
+        theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Start is called before the first frame update
@@ -90,6 +91,7 @@ public class ItemController : MonoBehaviour
 
     public void TakeObject()
     {
+        theAudio.PickUp();
         takeObject.SetActive(false);
         canTake = false;
         theInventory.AddSlot(this);

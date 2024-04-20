@@ -40,6 +40,7 @@ public class CameraController : MonoBehaviour
         OriginalPos = transform.localPosition;
         cameraSmoothingFactorY = cameraSmoothingFactor;
 
+        noUseCamera = false;
     }
 
     // Update is called once per frame

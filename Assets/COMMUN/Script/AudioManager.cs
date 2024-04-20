@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource[] sfxBootStepList;
     public AudioSource sfxPickUp;
-    public AudioSource sfxTorche;
-    public AudioSource sfxDoor;
+    public AudioSource sfxDoor, sfxScrapping;
+
 
     public int nbBootStep;
 
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public void BootStep()
     {
-        nbBootStep = Random.Range(0, 5);
+        nbBootStep = Random.Range(0, 4);
         sfxBootStepList[nbBootStep].Play();
     }
 
@@ -37,5 +37,10 @@ public class AudioManager : MonoBehaviour
     public void Door()
     {
         sfxDoor.Play();
+    }
+
+    public void Scrapping()
+    {
+        sfxScrapping.Play();
     }
 }

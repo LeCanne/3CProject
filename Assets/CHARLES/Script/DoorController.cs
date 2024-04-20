@@ -9,8 +9,11 @@ public class DoorController : MonoBehaviour
 
     public float timerOpen;
 
+    public AudioManager theAudio;
+
     private void Awake()
     {
+        theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         tr = GetComponent<Transform>();
     }
 
@@ -26,6 +29,7 @@ public class DoorController : MonoBehaviour
 
     IEnumerator OpenDoor() 
     {
+        theAudio.Door();
         Vector3 startPosition = tr.position;
         Vector3 endPosition = new Vector3(startPosition.x , tr.position.y + 10, startPosition.z);
 

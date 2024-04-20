@@ -23,8 +23,11 @@ public class DallesController : MonoBehaviour
     public GameObject door;
     public float timerOpen;
 
+    public AudioManager theAudio;
+
     private void Awake()
     {
+        theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         mainMesh = GetComponent<MeshRenderer>();
     }
 
@@ -89,6 +92,8 @@ public class DallesController : MonoBehaviour
 
     IEnumerator OpenDoor()
     {
+        theAudio.Door();
+
         Vector3 startPosition = new Vector3(door.transform.position.x, door.transform.position.y, door.transform.position.z);
         Vector3 endPosition = new Vector3(startPosition.x, door.transform.position.y + 10, startPosition.z);
 
