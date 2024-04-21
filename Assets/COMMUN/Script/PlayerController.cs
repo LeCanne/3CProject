@@ -232,20 +232,42 @@ namespace _3CFeel.Controller
         public void OnMove()
         {
 
-         
 
-            forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
-            forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
-            
-            rb.AddForce(forceDirection, ForceMode.Impulse);
-            if (forceDirection != Vector3.zero)
+            if (camControl.cameraState != CameraController.CAMERASTATES.CLOSE)
             {
-                Debug.Log("doingthat");
-                Vector3 direction = forceDirection;
-                Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-                skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.06f);
-                direction.y = 0;
-                skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+                forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
+               
+            }
+            else
+            {
+
+            }
+
+            if(Mathf.Abs(move.ReadValue<Vector2>().y) > 0.2f)
+            forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
+
+            rb.AddForce(forceDirection, ForceMode.Impulse);
+            if (forceDirection != Vector3.zero || camControl.cameraState == CameraController.CAMERASTATES.CLOSE)
+            {
+                if (camControl.cameraState != CameraController.CAMERASTATES.CLOSE)
+                {
+                    Vector3 direction = forceDirection;
+                    Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+                    skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.06f);
+                    direction.y = 0;
+                    skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+                }
+                else
+                {
+                   
+                    if(Mathf.Abs(move.ReadValue<Vector2>().x) > 0.5f  )
+                        skin.transform.eulerAngles += new Vector3(0, move.ReadValue<Vector2>().x * 100 * Time.deltaTime, 0);
+                    
+                    
+                }
+               
+                 
+               
                
                
                 
@@ -299,7 +321,7 @@ namespace _3CFeel.Controller
             forceDirection = Vector3.zero;
             
 
-            if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0 && IsGrounded() == true)
+            if (move.ReadValue<Vector2>().x == 0 && move.ReadValue<Vector2>().y == 0 && IsGrounded() == true )
             {
                 if (Mathf.Abs(rb.velocity.x) > 0 || Mathf.Abs(rb.velocity.z) > 0)
                 {
@@ -313,15 +335,20 @@ namespace _3CFeel.Controller
             }
             else
             {
-                if(rb.velocity.magnitude > 5f)
+                if (camControl.cameraState != CameraController.CAMERASTATES.CLOSE)
                 {
+                     
+                 if (rb.velocity.magnitude > 5f)
+                 {
                     Debug.Log(rb.velocity.magnitude);
                     rb.drag = 1.2f;
+                 }
+                 else
+                 {
+                     rb.drag = 5;
+                 }
                 }
-                else
-                {
-                    rb.drag = 5;
-                }
+               
                
             }
 

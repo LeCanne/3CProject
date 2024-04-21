@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
     private Quaternion camRotation;
     private RaycastHit hit;
     public GameObject closePos;
+    public GameObject rotatorSkin;
 
     public float speedjoystick;
     public enum CAMERASTATES
@@ -46,7 +47,14 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
+        {
+            t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point + t_camera.transform.forward));
+        }
+        else
+        {
+            t_camera.localPosition = Vector3.Lerp(t_camera.localPosition, camera_offset, Time.deltaTime);
+        }
         if (noUseCamera == false)
         {
             camRotation.x += Input.GetAxis("Joystick Y") * cameraSmoothingFactorY * -speedjoystick * Time.deltaTime;
@@ -61,21 +69,20 @@ public class CameraController : MonoBehaviour
             
             transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
 
-            if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
-            {
-                t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point + t_camera.transform.forward));
-            }
-            else
-            {
-                t_camera.localPosition = Vector3.Lerp(t_camera.localPosition, camera_offset, Time.deltaTime);
-            }
+           
+        }
+        else
+        {
+            t_camera.rotation = transform.localRotation;
         }
 
         if(cameraState == CAMERASTATES.DEFAULT)
         {
-           camera_offset = new Vector3(0, 0, -5.2f);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime / 0.3f);
             inclose = false;
+            noUseCamera = false;
+            camera_offset = new Vector3(0, 0, -5.2f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime / 0.3f);
+       
             matShader.SetFloat("_SeeThroughDistance", 1.8f);
 
             //EquationAxeX
@@ -86,15 +93,18 @@ public class CameraController : MonoBehaviour
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
+            noUseCamera = true;
             cameraSmoothingFactor = 1.3f;
             float distance = Vector3.Distance(transform.position, closePos.transform.position);
             if(distance > 0.5f)
             {
+               
                 transform.position = Vector3.Lerp(transform.position, closePos.transform.position, Time.deltaTime / 0.1f);
 
             }
             else
             {
+                transform.rotation = rotatorSkin.transform.rotation;
                 transform.position = closePos.transform.position;
             }
          
