@@ -11,24 +11,14 @@ public class AudioManager : MonoBehaviour
 
     public int nbBootStep;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Procédures activées par des scripts
     public void BootStep()
     {
         nbBootStep = Random.Range(0, 4);
         sfxBootStepList[nbBootStep].Play();
     }
 
+    // Procédures activées sur des animations
     public void PickUp()
     {
         sfxPickUp.Play();

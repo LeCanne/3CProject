@@ -24,6 +24,7 @@ public class PiedestalController : MonoBehaviour
     public TextMeshProUGUI txtPutObject;
     public GameObject takeObject;
     public Image imgTakeObject;
+    public Image imgIcon;
     public TextMeshProUGUI txtTakeObject;
     public static bool canPut1, havePut1;
     public static bool canPut2, havePut2;
@@ -89,39 +90,50 @@ public class PiedestalController : MonoBehaviour
     {
         imgPutObject.color = new Color(0, 0.8f, 1, 0.2f);
         txtPutObject.color = new Color(0, 0, 0, 0.2f);
+        imgIcon.color = new Color(0, 0, 0, 0.2f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.4f);
         txtPutObject.color = new Color(0, 0, 0, 0.4f);
+        imgIcon.color = new Color(0, 0, 0, 0.4f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.6f);
         txtPutObject.color = new Color(0, 0, 0, 0.6f);
+        imgIcon.color = new Color(0, 0, 0, 0.6f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.8f);
         txtPutObject.color = new Color(0, 0, 0, 0.8f);
+        imgIcon.color = new Color(0, 0, 0, 0.8f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 1f);
         txtPutObject.color = new Color(0, 0, 0, 1f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
     }
 
     public IEnumerator PutobjectOf()
     {
         imgPutObject.color = new Color(0, 0.8f, 1, 1f);
         txtPutObject.color = new Color(0, 0, 0, 1f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.8f);
         txtPutObject.color = new Color(0, 0, 0, 0.8f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.6f);
         txtPutObject.color = new Color(0, 0, 0, 0.6f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.4f);
         txtPutObject.color = new Color(0, 0, 0, 0.4f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0.2f);
         txtPutObject.color = new Color(0, 0, 0, 0.2f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
         yield return new WaitForSeconds(0.05f);
         imgPutObject.color = new Color(0, 0.8f, 1, 0);
         txtPutObject.color = new Color(0, 0, 0, 0f);
+        imgIcon.color = new Color(0, 0, 0, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
