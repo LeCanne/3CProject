@@ -133,7 +133,10 @@ MonoBehaviour:
   txtPutObject: {fileID: 0}
   takeObject: {fileID: 0}
   imgTakeObject: {fileID: 0}
+  imgIcon: {fileID: 0}
   txtTakeObject: {fileID: 0}
+  oeilDroite: {fileID: 0}
+  oeilGauche: {fileID: 0}
 --- !u!136 &8732080967364249182
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -185,7 +188,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -2.18, z: 0}
-  m_LocalScale: {x: 70, y: 70, z: 40}
+  m_LocalScale: {x: 80, y: 80, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8972336440636095050}

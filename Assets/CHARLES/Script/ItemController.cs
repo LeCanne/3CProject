@@ -94,6 +94,7 @@ public class ItemController : MonoBehaviour
     {
         theAudio.PickUp();
         takeObject.SetActive(false);
+        imgIcon.color = new Color(0, 0, 0, 0f);
         canTake = false;
         theInventory.AddSlot(this);
         Destroy(gameObject);

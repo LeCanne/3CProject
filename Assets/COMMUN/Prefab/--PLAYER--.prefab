@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 13400000, guid: 5d99f1b22fa67d24cbd46bb215f05301, type: 2}
+  spine: {fileID: 0}
   panelInventaire: {fileID: 0}
   content: {fileID: 0}
   MaxSpeed: 5
@@ -349,6 +350,7 @@ MonoBehaviour:
   inclose: 0
   t_camera: {fileID: 0}
   closePos: {fileID: 0}
+  rotatorSkin: {fileID: 0}
   speedjoystick: 0
   cameraState: 0
   matShader: {fileID: 0}
