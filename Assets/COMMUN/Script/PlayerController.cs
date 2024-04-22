@@ -458,6 +458,18 @@ namespace _3CFeel.Controller
                 camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
                 MaxSpeed = 7;
             }
+
+            if (other.CompareTag("Slow"))
+            {
+              
+                MaxSpeed = 3;
+            }
+
+            if (other.CompareTag("Fast"))
+            {
+
+                MaxSpeed = 7;
+            }
         }
 
         private void OnTriggerExit(Collider other) 
