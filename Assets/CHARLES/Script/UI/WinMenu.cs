@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WinMenu : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class WinMenu : MonoBehaviour
             winMenu.SetActive(true);
             CameraController.noUseCamera = true;
             Time.timeScale = 0;
+            EventSystem.current.SetSelectedGameObject(winMenu.transform.GetChild(1).gameObject);
         }
     }
 }
