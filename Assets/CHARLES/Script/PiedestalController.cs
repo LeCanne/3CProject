@@ -19,6 +19,7 @@ public class PiedestalController : MonoBehaviour
     public Transform trPlacement;
     public GameObject prefabItem;
 
+    [Header("Put/Take")]
     public GameObject putObject;
     public Image imgPutObject;
     public TextMeshProUGUI txtPutObject;
@@ -30,8 +31,11 @@ public class PiedestalController : MonoBehaviour
     public static bool canPut2, havePut2;
     public static bool clear1, clear2;
 
+    [Header("Yeux")]
     public GameObject oeilDroite;
     public GameObject oeilGauche;
+
+    public Material matInit, matClear;
 
     private void Awake()
     {
@@ -81,6 +85,8 @@ public class PiedestalController : MonoBehaviour
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear1 = true;
 
+            SpriteRenderer srDroite =  oeilDroite.GetComponent<SpriteRenderer>();
+            srDroite.material = matClear;
         }
 
         if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2 ||
@@ -88,6 +94,9 @@ public class PiedestalController : MonoBehaviour
         {
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear2 = true;
+
+            SpriteRenderer srGauche = oeilGauche.GetComponent<SpriteRenderer>();
+            srGauche.material = matClear;
         }
     }
 

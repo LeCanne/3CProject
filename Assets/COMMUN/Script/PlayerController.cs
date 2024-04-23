@@ -140,12 +140,18 @@ namespace _3CFeel.Controller
                     {
                         PiedestalController.havePut1 = false;
                         Debug.Log(PiedestalController.havePut1);
+
+                        //SpriteRenderer srDroite = piedestal.oeilDroite.GetComponent<SpriteRenderer>();
+                        //srDroite.material = piedestal.matInit;
                     }
 
                     if (piedestal.category == PiedestalController.CATEGORY.PIEDESTAL2)
                     {
                         PiedestalController.havePut2 = false;
                         Debug.Log(PiedestalController.havePut2);
+
+                        //SpriteRenderer srGauche = piedestal.oeilGauche.GetComponent<SpriteRenderer>();
+                        //srGauche.material = piedestal.matInit;
                     }
                 }
             }

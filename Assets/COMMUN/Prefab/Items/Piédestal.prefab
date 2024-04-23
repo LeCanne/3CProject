@@ -137,6 +137,8 @@ MonoBehaviour:
   txtTakeObject: {fileID: 0}
   oeilDroite: {fileID: 0}
   oeilGauche: {fileID: 0}
+  matInit: {fileID: 2100000, guid: 56d9c067a804e1a49bb3adf7e98acbe0, type: 2}
+  matClear: {fileID: 2100000, guid: 52fe0e3abe114b7449a5c84751a756de, type: 2}
 --- !u!136 &8732080967364249182
 CapsuleCollider:
   m_ObjectHideFlags: 0

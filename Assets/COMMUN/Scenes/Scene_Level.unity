@@ -22842,13 +22842,23 @@ PrefabInstance:
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: category
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: putObject
       value: 
       objectReference: {fileID: 537915622}
+    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: oeilDroite
+      value: 
+      objectReference: {fileID: 1522509732}
+    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
+        type: 3}
+      propertyPath: oeilGauche
+      value: 
+      objectReference: {fileID: 1522509731}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: takeObject
@@ -32234,7 +32244,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 52fe0e3abe114b7449a5c84751a756de, type: 2}
+      objectReference: {fileID: 2100000, guid: 56d9c067a804e1a49bb3adf7e98acbe0, type: 2}
     - target: {fileID: 4519952713222259708, guid: 8e6e507ade88c6845be88f7f83a39a20,
         type: 3}
       propertyPath: m_Enabled
@@ -32244,7 +32254,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 52fe0e3abe114b7449a5c84751a756de, type: 2}
+      objectReference: {fileID: 2100000, guid: 56d9c067a804e1a49bb3adf7e98acbe0, type: 2}
     - target: {fileID: 8632693244083275431, guid: 8e6e507ade88c6845be88f7f83a39a20,
         type: 3}
       propertyPath: m_LocalScale.x
