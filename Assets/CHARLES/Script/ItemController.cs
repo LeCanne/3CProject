@@ -94,7 +94,7 @@ public class ItemController : MonoBehaviour
     {
         theAudio.PickUp();
         takeObject.SetActive(false);
-        imgIcon.color = new Color(0, 0, 0, 0f);
+        imgIcon.color = new Color(1, 1, 1, 0f);
         canTake = false;
         theInventory.AddSlot(this);
         Destroy(gameObject);
@@ -104,50 +104,50 @@ public class ItemController : MonoBehaviour
     {
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.2f);
         txtTakeObject.color = new Color(0, 0, 0, 0.2f);
-        imgIcon.color = new Color(0, 0, 0, 0.2f);
+        imgIcon.color = new Color(1, 1, 1, 0.2f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.4f);
         txtTakeObject.color = new Color(0, 0, 0, 0.4f);
-        imgIcon.color = new Color(0, 0, 0, 0.4f);
+        imgIcon.color = new Color(1, 1, 1, 0.4f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.6f);
         txtTakeObject.color = new Color(0, 0, 0, 0.6f);
-        imgIcon.color = new Color(0, 0, 0, 0.6f);
+        imgIcon.color = new Color(1, 1, 1, 0.6f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.8f);
         txtTakeObject.color = new Color(0, 0, 0, 0.8f);
-        imgIcon.color = new Color(0, 0, 0, 0.8f);
+        imgIcon.color = new Color(1, 1, 1, 0.8f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 1f);
         txtTakeObject.color = new Color(0, 0, 0, 1f);
-        imgIcon.color = new Color(0, 0, 0, 1f);
+        imgIcon.color = new Color(1, 1, 1, 1f);
     }
 
     public IEnumerator TakeobjectOf()
     {
         imgTakeObject.color = new Color(0, 0.8f, 1, 1f);
         txtTakeObject.color = new Color(0, 0, 0, 1f);
-        imgIcon.color = new Color(0, 0, 0, 1f);
+        imgIcon.color = new Color(1, 1, 1, 1f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.8f);
         txtTakeObject.color = new Color(0, 0, 0, 0.8f);
-        imgIcon.color = new Color(0, 0, 0, 0.8f);
+        imgIcon.color = new Color(1, 1, 1, 0.8f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.6f);
         txtTakeObject.color = new Color(0, 0, 0, 0.6f);
-        imgIcon.color = new Color(0, 0, 0, 0.6f);
+        imgIcon.color = new Color(1, 1, 1, 0.6f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.4f);
         txtTakeObject.color = new Color(0, 0, 0, 0.4f);
-        imgIcon.color = new Color(0, 0, 0, 0.4f);
+        imgIcon.color = new Color(1, 1, 1, 0.4f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.2f);
         txtTakeObject.color = new Color(0, 0, 0, 0.2f);
-        imgIcon.color = new Color(0, 0, 0, 0.2f);
+        imgIcon.color = new Color(1, 1, 1, 0.2f);
         yield return new WaitForSeconds(0.05f);
         imgTakeObject.color = new Color(0, 0.8f, 1, 0);
         txtTakeObject.color = new Color(0, 0, 0, 0f);
-        imgIcon.color = new Color(0, 0, 0, 0f);
+        imgIcon.color = new Color(1, 1, 1, 0f);
     }
 
     private void OnTriggerEnter(Collider other)
