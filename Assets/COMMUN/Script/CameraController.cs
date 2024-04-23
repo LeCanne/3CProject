@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour
     private RaycastHit hit;
     public GameObject closePos;
     public GameObject rotatorSkin;
+    public _3CFeel.Controller.PlayerController playerCon;
 
     public float speedjoystick;
     public enum CAMERASTATES
@@ -102,7 +103,7 @@ public class CameraController : MonoBehaviour
                 cameraSmoothingFactor = 2 / (Mathf.Abs(camRotation.x) / 10 + 1);
             }
             
-            if(camRotation.x != 0 && timerCameraUse > 1)
+            if(camRotation.x != 0 && timerCameraUse > 1 && playerCon.timerMove > 1)
             {
                 camRotation.x = Mathf.LerpAngle(camRotation.x, 0 , 1 * Time.deltaTime) ;
             }
