@@ -24365,8 +24365,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2927259201760374749, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
+      propertyPath: m_text
+      value: Thank you for playing our demo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927259201760374749, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
+        type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3267353408309045077, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
@@ -24376,7 +24381,7 @@ PrefabInstance:
     - target: {fileID: 3267353408309045077, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3452429012165458572, guid: 47b39a2bd0fd505448fb48d0bfa8bf07,
         type: 3}
