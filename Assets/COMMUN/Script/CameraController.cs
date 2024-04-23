@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CameraController : MonoBehaviour
     public float maxVerticalAngle = 45f;
     
     public static bool noUseCamera;
+    public float timerCameraUse;
     public bool inclose;
     public Transform t_camera;
     private Vector3 camera_offset;
@@ -47,6 +49,15 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetAxis("Joystick X") != 0 || Input.GetAxis("Joystick Y") != 0 || Input.GetAxis("Mouse Y") != 0 || Input.GetAxis("Mouse X") != 0)
+        {
+            timerCameraUse = 0;
+        }
+        else
+        {
+            timerCameraUse += Time.deltaTime;
+        }
         if (Physics.Linecast(transform.position, (transform.position + transform.localRotation * camera_offset) - t_camera.transform.forward, out hit) && inclose == false)
         {
             t_camera.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point + t_camera.transform.forward));
@@ -81,7 +92,7 @@ public class CameraController : MonoBehaviour
             inclose = false;
             noUseCamera = false;
             camera_offset = new Vector3(0, 0, -5.2f);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime / 0.3f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, OriginalPos, Time.deltaTime);
        
             matShader.SetFloat("_SeeThroughDistance", 1.8f);
 
@@ -89,6 +100,11 @@ public class CameraController : MonoBehaviour
             if (camRotation.x != 0)
             {
                 cameraSmoothingFactor = 2 / (Mathf.Abs(camRotation.x) / 10 + 1);
+            }
+            
+            if(camRotation.x != 0 && timerCameraUse > 1)
+            {
+                camRotation.x = Mathf.LerpAngle(camRotation.x, 0 , 1 * Time.deltaTime) ;
             }
         }
         if (cameraState == CAMERASTATES.CLOSE)

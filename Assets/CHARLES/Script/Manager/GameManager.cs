@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     public void MyLoadScene(int idScene)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(idScene);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idScene);
         Time.timeScale = 1.0f;
 
         PiedestalController.clear1 = false;
