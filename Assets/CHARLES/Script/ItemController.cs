@@ -32,6 +32,8 @@ public class ItemController : MonoBehaviour
     public TextMeshProUGUI txtTakeObject;
     public static bool canTake;
 
+    public GameObject objectCamera;
+
     private void Awake()
     {
         theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -87,7 +89,7 @@ public class ItemController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        takeObject.transform.LookAt(objectCamera.transform.position);
     }
 
     public void TakeObject()

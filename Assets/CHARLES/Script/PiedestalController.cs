@@ -31,6 +31,8 @@ public class PiedestalController : MonoBehaviour
     public static bool canPut2, havePut2;
     public static bool clear1, clear2;
 
+    public GameObject objectCamera;
+
     [Header("Yeux")]
     public GameObject oeilDroite;
     public GameObject oeilGauche;
@@ -40,6 +42,11 @@ public class PiedestalController : MonoBehaviour
     private void Awake()
     {
         theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
+
+    private void Update()
+    {
+        putObject.transform.LookAt(objectCamera.transform.position);
     }
 
     // On ajoute l'objet qu'on a sélectionne depuis l'inventaire en donnant ses données
@@ -79,8 +86,7 @@ public class PiedestalController : MonoBehaviour
             }
         }
 
-        if (category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1 || 
-            category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1)
+        if (category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT1)
         {
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear1 = true;
@@ -89,8 +95,7 @@ public class PiedestalController : MonoBehaviour
             meshDroite.material = matClear;
         }
 
-        if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2 ||
-            category == CATEGORY.PIEDESTAL1 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2)
+        if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2)
         {
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear2 = true;

@@ -6891,16 +6891,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 2725980984870174992, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725980984870174992, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725980984870174992, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725980984870174992, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725980984870174992, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4129495626400425964, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
+    - target: {fileID: 4684365026880377117, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
-      propertyPath: imgIcon
-      value: 
-      objectReference: {fileID: 1535866677}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: category
@@ -6913,24 +6938,14 @@ PrefabInstance:
       objectReference: {fileID: 235150065}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
-      propertyPath: takeObject
+      propertyPath: objectCamera
       value: 
-      objectReference: {fileID: 1550592800}
+      objectReference: {fileID: 5768150604296139909}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: theInventory
       value: 
       objectReference: {fileID: 1022487715}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
-        type: 3}
-      propertyPath: imgTakeObject
-      value: 
-      objectReference: {fileID: 1550592802}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
-        type: 3}
-      propertyPath: txtTakeObject
-      value: 
-      objectReference: {fileID: 722026026}
     - target: {fileID: 6861849552173926275, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -17841,16 +17856,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
-      propertyPath: imgIcon
-      value: 
-      objectReference: {fileID: 1535866677}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: putObject
-      value: 
-      objectReference: {fileID: 537915622}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
       propertyPath: oeilDroite
       value: 
       objectReference: {fileID: 1522509732}
@@ -17861,34 +17866,14 @@ PrefabInstance:
       objectReference: {fileID: 1522509731}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
-      propertyPath: takeObject
+      propertyPath: objectCamera
       value: 
-      objectReference: {fileID: 1550592800}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: imgPutObject
-      value: 
-      objectReference: {fileID: 537915624}
+      objectReference: {fileID: 5768150604296139909}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: theInventory
       value: 
       objectReference: {fileID: 1022487715}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: txtPutObject
-      value: 
-      objectReference: {fileID: 1023309873}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: imgTakeObject
-      value: 
-      objectReference: {fileID: 1550592802}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: txtTakeObject
-      value: 
-      objectReference: {fileID: 722026026}
     - target: {fileID: 8972336440636095050, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21549,19 +21534,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
-      propertyPath: imgIcon
-      value: 
-      objectReference: {fileID: 1535866677}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
       propertyPath: category
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: putObject
-      value: 
-      objectReference: {fileID: 537915622}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: oeilDroite
@@ -21574,34 +21549,14 @@ PrefabInstance:
       objectReference: {fileID: 1522509731}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
-      propertyPath: takeObject
+      propertyPath: objectCamera
       value: 
-      objectReference: {fileID: 1550592800}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: imgPutObject
-      value: 
-      objectReference: {fileID: 537915624}
+      objectReference: {fileID: 5768150604296139909}
     - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: theInventory
       value: 
       objectReference: {fileID: 1022487715}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: txtPutObject
-      value: 
-      objectReference: {fileID: 1023309873}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: imgTakeObject
-      value: 
-      objectReference: {fileID: 1550592802}
-    - target: {fileID: 6162343794029317768, guid: e174d8a66127af64cabaa1f7920db55a,
-        type: 3}
-      propertyPath: txtTakeObject
-      value: 
-      objectReference: {fileID: 722026026}
     - target: {fileID: 8972336440636095050, guid: e174d8a66127af64cabaa1f7920db55a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25750,34 +25705,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
-      propertyPath: imgIcon
-      value: 
-      objectReference: {fileID: 1535866677}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
-        type: 3}
       propertyPath: objectMesh
       value: 
       objectReference: {fileID: 1357734061}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
-      propertyPath: takeObject
+      propertyPath: objectCamera
       value: 
-      objectReference: {fileID: 1550592800}
+      objectReference: {fileID: 5768150604296139909}
     - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: theInventory
       value: 
       objectReference: {fileID: 1022487715}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
-        type: 3}
-      propertyPath: imgTakeObject
-      value: 
-      objectReference: {fileID: 1550592802}
-    - target: {fileID: 5249044784551568988, guid: cc24fc34b4aa09341924a4bde2a04ea2,
-        type: 3}
-      propertyPath: txtTakeObject
-      value: 
-      objectReference: {fileID: 722026026}
     - target: {fileID: 6861849552173926275, guid: cc24fc34b4aa09341924a4bde2a04ea2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -31041,18 +30981,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1522509730}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1535866677 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6168925219054151980, guid: 26b619ac9f2e4b24681b6d9b9c0c0977,
-    type: 3}
-  m_PrefabInstance: {fileID: 2063385140}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1537881714
 GameObject:
   m_ObjectHideFlags: 0
@@ -47770,6 +47698,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8608d8250457b7488529fb4922a0f82, type: 3}
+--- !u!1 &5768150604296139909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5078233975197626240, guid: d8608d8250457b7488529fb4922a0f82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5768150604296139908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7977430230651059573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3109966974769950985, guid: d8608d8250457b7488529fb4922a0f82,
