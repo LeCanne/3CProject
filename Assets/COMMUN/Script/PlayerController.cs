@@ -29,6 +29,7 @@ namespace _3CFeel.Controller
         public float rotationSpeed;
         private Vector3 forceDirection = Vector3.zero;
         private float movementForce = 1f;
+        public float timerMove;
         public float jumpForce = 5f;
         public GameObject skin;
 
@@ -336,11 +337,13 @@ namespace _3CFeel.Controller
                     rb.drag = 8;
                 }
 
-
+                timerMove = 0;
 
             }
             else
             {
+                Debug.Log("yes");
+                timerMove += Time.deltaTime;
                 if (camControl.cameraState != CameraController.CAMERASTATES.CLOSE)
                 {
                      
@@ -354,6 +357,9 @@ namespace _3CFeel.Controller
                      rb.drag = 5;
                  }
                 }
+               
+
+
                
                
             }
