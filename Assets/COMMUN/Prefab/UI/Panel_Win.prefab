@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thank you to play our demo.
+  m_text: Thank you to playing our demo.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 579ec729ebec1b946b1d6034dedcef3d, type: 2}
   m_sharedMaterial: {fileID: 8255344697703655543, guid: 579ec729ebec1b946b1d6034dedcef3d,

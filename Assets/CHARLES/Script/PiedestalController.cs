@@ -85,8 +85,8 @@ public class PiedestalController : MonoBehaviour
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear1 = true;
 
-            SpriteRenderer srDroite =  oeilDroite.GetComponent<SpriteRenderer>();
-            srDroite.material = matClear;
+            MeshRenderer meshDroite =  oeilDroite.GetComponent<MeshRenderer>();
+            meshDroite.material = matClear;
         }
 
         if (category == CATEGORY.PIEDESTAL2 && newItem.GetComponent<ItemController>().category == ItemController.CATEGORY.IMPORTANT2 ||
@@ -95,8 +95,8 @@ public class PiedestalController : MonoBehaviour
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear2 = true;
 
-            SpriteRenderer srGauche = oeilGauche.GetComponent<SpriteRenderer>();
-            srGauche.material = matClear;
+            MeshRenderer meshGauche = oeilGauche.GetComponent<MeshRenderer>();
+            meshGauche.material = matClear;
         }
     }
 

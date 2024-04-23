@@ -52,7 +52,7 @@ public class InventoryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire4") && canUse)
+        if (Input.GetButtonDown("Fire3") && canUse)
         {
             if (PiedestalController.canPut1)
             {
