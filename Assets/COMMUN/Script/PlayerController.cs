@@ -105,6 +105,11 @@ namespace _3CFeel.Controller
                 panelInventaire.SetActive(false);
                 theInventory.buttonUse.SetActive(false);
                 Time.timeScale = 1f;
+
+                if (!PiedestalController.canPut1 && !PiedestalController.clear1 || !PiedestalController.canPut2 && !PiedestalController.clear2)
+                {
+                    piedestal.StartCoroutine(piedestal.PutobjectOn());
+                }
             }
 
             // On détecte le sol pour modifier la friction du physic material
@@ -160,6 +165,7 @@ namespace _3CFeel.Controller
             // On ouvre l'inventaire pour déposer un objet
             if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 && !InventoryController.noUseInventory || Input.GetButtonDown("Fire3") && PiedestalController.canPut2 && !InventoryController.noUseInventory)
             {
+                piedestal.StartCoroutine(piedestal.PutobjectOf());
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
 
