@@ -110,7 +110,7 @@ public class CameraController : MonoBehaviour
         }
         if (cameraState == CAMERASTATES.CLOSE)
         {
-            noUseCamera = true;
+          
             cameraSmoothingFactor = 1.3f;
             float distance = Vector3.Distance(transform.position, closePos.transform.position);
             if(distance > 0.5f)
@@ -121,7 +121,7 @@ public class CameraController : MonoBehaviour
             }
             else
             {
-                transform.rotation = rotatorSkin.transform.rotation;
+               
                 transform.position = closePos.transform.position;
             }
          

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(panelMainMenu != null)
         EventSystem.current.SetSelectedGameObject(panelMainMenu.transform.GetChild(0).gameObject);
     }
 

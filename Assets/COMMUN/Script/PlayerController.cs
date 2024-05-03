@@ -80,9 +80,9 @@ namespace _3CFeel.Controller
 
         private void Update()
         {
-            skin.transform.eulerAngles = new Vector3(0, skin.transform.eulerAngles.y, 0);
+            
             skin.transform.localPosition = new Vector3(0, 0.6f, 0);
-           // spine.transform.localPosition = Vector3.zero;
+           
             Animations();
 
 
@@ -200,7 +200,7 @@ namespace _3CFeel.Controller
 
         public void Animations()
         {
-            anim.SetFloat("VelocityX", rb.velocity.x);
+            anim.SetFloat("VelocityX", Mathf.Abs(move.ReadValue<Vector2>().magnitude));
             anim.SetFloat("VelocityZ", rb.velocity.z);
             anim.SetFloat("TimeIdle", timerIdle);
             anim.SetFloat("TimeFall", timerFall);
@@ -246,15 +246,11 @@ namespace _3CFeel.Controller
         {
 
 
-            if (camControl.cameraState != CameraController.CAMERASTATES.CLOSE)
-            {
+           
                 forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(Camera) * movementForce;
                
-            }
-            else
-            {
-
-            }
+            
+           
 
             if(Mathf.Abs(move.ReadValue<Vector2>().y) > 0.2f)
             forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(Camera) * movementForce;
@@ -268,13 +264,13 @@ namespace _3CFeel.Controller
                     Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
                     skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.06f);
                     direction.y = 0;
-                    skin.transform.eulerAngles = new Vector3(10, skin.transform.eulerAngles.y, 0);
+                   
                 }
                 else
                 {
                    
-                    if(Mathf.Abs(move.ReadValue<Vector2>().x) > 0.5f  )
-                        skin.transform.eulerAngles += new Vector3(0, move.ReadValue<Vector2>().x * 100 * Time.deltaTime, 0);
+                    
+                        skin.transform.localEulerAngles = new Vector3(0, camControl.gameObject.transform.eulerAngles.y, 0);
                     
                     
                 }

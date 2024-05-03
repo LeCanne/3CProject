@@ -161,6 +161,7 @@ MonoBehaviour:
   timerMove: 0
   jumpForce: 5
   skin: {fileID: 527372099113528926}
+  canrun: 0
   Camera: {fileID: 2382026821634612722}
   item: {fileID: 0}
   piedestal: {fileID: 0}
@@ -8040,6 +8041,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4d7b7c0564676ee4a902dae3db36004a, type: 2}
+  - {fileID: 2100000, guid: 43b7ec6a22f8a214ab0dd588d9a22662, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
