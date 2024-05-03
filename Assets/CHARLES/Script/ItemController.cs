@@ -10,6 +10,7 @@ public class ItemController : MonoBehaviour
     public InventoryController theInventory;
     public PiedestalController piedestal;
     private AudioManager theAudio;
+    public ShowObject theObject;
 
     public enum CATEGORY
     {
@@ -37,6 +38,7 @@ public class ItemController : MonoBehaviour
     private void Awake()
     {
         theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        
     }
 
     // Start is called before the first frame update
@@ -44,30 +46,6 @@ public class ItemController : MonoBehaviour
     {
         foreach (var data in database.datas)
         {
-            if (category == CATEGORY.NON_IMPORTANT1 && data.categories == ItemData.CATEGORY.NON_IMPORTANT1) 
-            {
-                objectMesh.sharedMesh = data.mesh;
-                sp = data.icon;
-                label = data.label;
-                caption = data.caption;
-            }
-
-            if (category == CATEGORY.NON_IMPORTANT2 && data.categories == ItemData.CATEGORY.NON_IMPORTANT2)
-            {
-                objectMesh.sharedMesh = data.mesh;
-                sp = data.icon;
-                label = data.label;
-                caption = data.caption;
-            }
-
-            if (category == CATEGORY.NON_IMPORTANT3 && data.categories == ItemData.CATEGORY.NON_IMPORTANT3)
-            {
-                objectMesh.sharedMesh = data.mesh;
-                sp = data.icon;
-                label = data.label;
-                caption = data.caption;
-            }
-
             if (category == CATEGORY.IMPORTANT1 && data.categories == ItemData.CATEGORY.IMPORTANT1)
             {
                 objectMesh.sharedMesh = data.mesh;
@@ -99,6 +77,10 @@ public class ItemController : MonoBehaviour
         imgIcon.color = new Color(1, 1, 1, 0f);
         canTake = false;
         theInventory.AddSlot(this);
+
+        theObject.gameObject.SetActive(true);
+        theObject.AddObject(sp, label);
+
         Destroy(gameObject);
     }
 

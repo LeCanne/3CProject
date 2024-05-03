@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: NewItemDatabase
   m_EditorClassIdentifier: 
   datas:
-  - label: Oeil Droite
-    caption: "On pourra\xEEt le mettre l'un des yeux de la porte."
+  - label: Right eye
+    caption: We could put it one of the eyes of the door.
     mesh: {fileID: 5630590726735672503, guid: 4a9b111ad9586f749a1c22e3e157b379, type: 3}
     icon: {fileID: 21300000, guid: 5098beca264b51642b05314cc40800ce, type: 3}
     categories: 0
-  - label: Oeil Gauche
-    caption: "On pourra\xEEt le mettre l'un des yeux de la porte."
+  - label: Left eye
+    caption: We could put it one of the eyes of the door.
     mesh: {fileID: 5630590726735672503, guid: 4a9b111ad9586f749a1c22e3e157b379, type: 3}
     icon: {fileID: 21300000, guid: 7ee3f315a9da0ad4a9cfdab805bd3877, type: 3}
     categories: 1

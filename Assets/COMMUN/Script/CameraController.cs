@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    
+
 
     public float cameraSmoothingFactor = 1;
     public float cameraSmoothingFactorY;
