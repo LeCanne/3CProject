@@ -478,12 +478,14 @@ namespace _3CFeel.Controller
             {
               
                 MaxSpeed = 3;
+                anim.SetBool("isWalk", true);
             }
 
             if (other.CompareTag("Fast"))
             {
 
                 MaxSpeed = 7;
+                anim.SetBool("isWalk", false);
             }
         }
 
