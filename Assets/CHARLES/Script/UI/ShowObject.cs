@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class ShowObject : MonoBehaviour
 {
+    public DoorController theDoor;
+    private ItemController theItem;
+
     public DepthOfField blur;
     public Volume volume;
     public ClampedFloatParameter cfp;
@@ -17,6 +20,7 @@ public class ShowObject : MonoBehaviour
     public TextMeshProUGUI txtLabel;
     public Image imgObject;
     private bool canClose;
+    public bool isRightEye;
 
     private void Awake()
     {
@@ -34,6 +38,13 @@ public class ShowObject : MonoBehaviour
             canClose = false;
             Time.timeScale = 1;
             CameraController.noUseCamera = false;
+
+            if (isRightEye)
+            {
+                isRightEye = false;
+                theDoor.StartCoroutine(theDoor.OpenDoor());
+            }
+
             gameObject.SetActive(false);
         }
     }

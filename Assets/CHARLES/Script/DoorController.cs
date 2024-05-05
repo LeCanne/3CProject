@@ -27,7 +27,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    IEnumerator OpenDoor() 
+    public IEnumerator OpenDoor() 
     {
         theAudio.Door();
         Vector3 startPosition = tr.position;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
@@ -24,7 +25,7 @@ public class ItemController : MonoBehaviour
     public CATEGORY category;
     public string label;
     public string caption;
-    public Sprite sp;
+    public UnityEngine.Sprite sp;
     public MeshFilter objectMesh;
 
     public GameObject takeObject;
@@ -79,6 +80,10 @@ public class ItemController : MonoBehaviour
         theInventory.AddSlot(this);
 
         theObject.gameObject.SetActive(true);
+        
+        if (category == CATEGORY.IMPORTANT1)
+            theObject.isRightEye = true;
+
         theObject.AddObject(sp, label);
 
         Destroy(gameObject);
