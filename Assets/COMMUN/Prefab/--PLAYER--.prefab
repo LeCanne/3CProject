@@ -156,6 +156,7 @@ MonoBehaviour:
   content: {fileID: 0}
   MaxSpeed: 5
   rotationSpeed: 0
+  timerMove: 0
   jumpForce: 5
   skin: {fileID: 0}
   Camera: {fileID: 0}
@@ -223,7 +224,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -259,7 +260,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -347,10 +348,12 @@ MonoBehaviour:
   cameraSmoothingFactorY: 0
   minVerticalAngle: -45
   maxVerticalAngle: 45
+  timerCameraUse: 0
   inclose: 0
   t_camera: {fileID: 0}
   closePos: {fileID: 0}
   rotatorSkin: {fileID: 0}
+  playerCon: {fileID: 0}
   speedjoystick: 0
   cameraState: 0
   matShader: {fileID: 0}
@@ -406,7 +409,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -442,7 +445,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -534,7 +537,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -570,7 +573,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -662,7 +665,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -698,7 +701,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

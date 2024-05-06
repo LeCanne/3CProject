@@ -23,6 +23,7 @@ namespace _3CFeel.Controller
 
         public GameObject panelInventaire;
         public GameObject content;
+        public GameObject iconeInventaire;
 
         [Header("PlayerSettings")]
         public float MaxSpeed;
@@ -92,7 +93,7 @@ namespace _3CFeel.Controller
                 CameraController.noUseCamera = true;
                 InventoryController.noUseInventory = true;
                 panelInventaire.SetActive(true);
-
+                iconeInventaire.SetActive(false);
 
                 if (content.GetComponentInChildren<Button>())
                     EventSystem.current.SetSelectedGameObject(content.transform.GetChild(0).gameObject);
@@ -104,6 +105,7 @@ namespace _3CFeel.Controller
                 CameraController.noUseCamera = false;
                 panelInventaire.SetActive(false);
                 theInventory.buttonUse.SetActive(false);
+                iconeInventaire.SetActive(true);
                 Time.timeScale = 1f;
 
                 if (!PiedestalController.canPut1 && !PiedestalController.clear1 || !PiedestalController.canPut2 && !PiedestalController.clear2)
