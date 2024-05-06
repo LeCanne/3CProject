@@ -53,6 +53,7 @@ namespace _3CFeel.Controller
         private RaycastHit slopeHit;
         private bool exitingSlope;
         private bool hasExited;
+        private float OGspeed;
 
         Vector3 moveDirection;
 
@@ -67,10 +68,10 @@ namespace _3CFeel.Controller
            // jump = inputActions.Gameplay.Jump;
             rb = GetComponent<Rigidbody>();
             capCollider = GetComponent<CapsuleCollider>();
-
+            
             inputActions = new Player();
             //_input = GetComponent<PlayerInput>();
-
+            OGspeed = MaxSpeed;
 
         }
 
@@ -474,7 +475,7 @@ namespace _3CFeel.Controller
             if (other.CompareTag("DefaultCamera"))
             {
                 camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
-                MaxSpeed = 7;
+                MaxSpeed = OGspeed;
             }
 
             if (other.CompareTag("Slow"))
@@ -487,7 +488,7 @@ namespace _3CFeel.Controller
             if (other.CompareTag("Fast"))
             {
 
-                MaxSpeed = 7;
+                MaxSpeed = OGspeed;
                 anim.SetBool("isWalk", false);
             }
         }
