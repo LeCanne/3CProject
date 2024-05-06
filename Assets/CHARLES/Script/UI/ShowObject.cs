@@ -1,3 +1,4 @@
+using _3CFeel.Controller;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ public class ShowObject : MonoBehaviour
 {
     public DoorController theDoor;
     private ItemController theItem;
+    private PlayerController thePlayer;
 
     public DepthOfField blur;
     public Volume volume;
@@ -24,6 +26,8 @@ public class ShowObject : MonoBehaviour
 
     private void Awake()
     {
+        thePlayer = GameObject.FindAnyObjectByType<PlayerController>();
+
         DepthOfField dof;
         if (volume.profile.TryGet<DepthOfField>(out dof))
         {
@@ -38,6 +42,7 @@ public class ShowObject : MonoBehaviour
             canClose = false;
             Time.timeScale = 1;
             CameraController.noUseCamera = false;
+            thePlayer.iconeInventaire.SetActive(true);
 
             if (isRightEye)
             {
@@ -51,6 +56,7 @@ public class ShowObject : MonoBehaviour
 
     public IEnumerator Blur()
     {
+        thePlayer.iconeInventaire.SetActive(false);
         Time.timeScale = 0.0f;
         CameraController.noUseCamera = true;
         timerBlur = 0;

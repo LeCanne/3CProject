@@ -170,6 +170,7 @@ namespace _3CFeel.Controller
                 piedestal.StartCoroutine(piedestal.PutobjectOf());
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
+                iconeInventaire.SetActive(false);
 
                 InventoryController.haveButton = true;
                 InventoryController.noUseInventory = true;

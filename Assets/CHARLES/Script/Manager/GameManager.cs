@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject panelMainMenu;
     public GameObject pauseMenuUI;
+    public GameObject fond;
 
     public PlayerController thePlayer;
 
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if(panelMainMenu != null)
-        EventSystem.current.SetSelectedGameObject(panelMainMenu.transform.GetChild(0).gameObject);
+        EventSystem.current.SetSelectedGameObject(panelMainMenu.transform.GetChild(1).gameObject);
     }
 
     // Update is called once per frame
@@ -68,6 +69,11 @@ public class GameManager : MonoBehaviour
         CameraController.noUseCamera = false;
         /*SceneManager.LoadScene("menueStart")*/
         ;
+    }
+
+    public void Transition()
+    {
+        fond.SetActive(true);
     }
 
     public void MyLoadScene(int idScene)
