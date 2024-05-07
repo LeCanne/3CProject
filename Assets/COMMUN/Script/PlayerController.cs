@@ -280,6 +280,7 @@ namespace _3CFeel.Controller
                 {
                     highfall = true;
                     theAudio.Falling();
+                    anim.SetTrigger("HighFall");
                 }
                   
                 anim.SetBool("isFalling", false);
