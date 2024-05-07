@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DallesController : MonoBehaviour
 {
+    // Catégories pour assigner le type de dalle
     public enum CATEGORY
     {
         TRUE,
@@ -29,23 +30,6 @@ public class DallesController : MonoBehaviour
     {
         theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         mainMesh = GetComponent<MeshRenderer>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Reset()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)

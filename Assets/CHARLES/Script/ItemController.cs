@@ -45,6 +45,7 @@ public class ItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // On assigne les datas selon la categorie de l'objet
         foreach (var data in database.datas)
         {
             if (category == CATEGORY.IMPORTANT1 && data.categories == ItemData.CATEGORY.IMPORTANT1)
@@ -71,6 +72,7 @@ public class ItemController : MonoBehaviour
         takeObject.transform.LookAt(objectCamera.transform.position);
     }
 
+    // Procédure activée depuis le script "PlayerController"
     public void TakeObject()
     {
         theAudio.PickUp();
@@ -89,6 +91,7 @@ public class ItemController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Procédure activée depuis le script "PlayerController"
     public IEnumerator TakeobjectOn()
     {
         imgTakeObject.color = new Color(0, 0.8f, 1, 0.2f);
