@@ -88,7 +88,7 @@ public class ItemController : MonoBehaviour
 
         theObject.AddObject(sp, label);
 
-        Destroy(gameObject);
+        
     }
 
     // Procédure activée depuis le script "PlayerController"

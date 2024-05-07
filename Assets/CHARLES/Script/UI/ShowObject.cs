@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class ShowObject : MonoBehaviour
 {
     public DoorController theDoor;
-    private ItemController theItem;
+    public ItemController theItem;
     private PlayerController thePlayer;
 
     public DepthOfField blur;
@@ -28,15 +28,18 @@ public class ShowObject : MonoBehaviour
     {
         thePlayer = GameObject.FindAnyObjectByType<PlayerController>();
 
-        if (isRightEye) 
-        { 
-            theDoor =  GameObject.Find("porte_enigme_LowPoly_Exit").GetComponent<DoorController>();
-        }
-
         DepthOfField dof;
         if (volume.profile.TryGet<DepthOfField>(out dof))
         {
             blur = dof;
+        }
+    }
+
+    private void Start()
+    {
+        if (isRightEye)
+        {
+            theDoor = GameObject.Find("porte_enigme_LowPoly_Exit").GetComponent<DoorController>();
         }
     }
 
@@ -56,6 +59,7 @@ public class ShowObject : MonoBehaviour
             }
 
             gameObject.SetActive(false);
+            Destroy(theItem.gameObject);
         }
     }
 
