@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject fond;
 
+    public GameObject iconeInventaire;
+
     public PlayerController thePlayer;
 
     public static bool gamIsPaused = false;
@@ -44,31 +46,29 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        iconeInventaire.SetActive(true);
         CameraController.noUseCamera = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gamIsPaused = false;
-
-        //thePlayer.isDead = false;
     }
 
     public void Pause()
     {
+        iconeInventaire.SetActive(false);
         CameraController.noUseCamera = true;
         pauseMenuUI.SetActive(true);
         gamIsPaused = true;
         EventSystem.current.SetSelectedGameObject(pauseMenuUI.transform.GetChild(1).gameObject);
-        //thePlayer.isDead = true;
     }
 
     public void LoadMenu()
     {
+        iconeInventaire.SetActive(true);
         Time.timeScale = 1f;
         gamIsPaused = false;
         pauseMenuUI.SetActive(false);
         CameraController.noUseCamera = false;
-        /*SceneManager.LoadScene("menueStart")*/
-        ;
     }
 
     public void Transition()
@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
         Application.Quit();
     }
 }

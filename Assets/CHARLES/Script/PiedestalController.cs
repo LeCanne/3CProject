@@ -91,6 +91,7 @@ public class PiedestalController : MonoBehaviour
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear1 = true;
 
+            oeilDroite.SetActive(true);
             MeshRenderer meshDroite =  oeilDroite.GetComponent<MeshRenderer>();
             meshDroite.material = matClear;
         }
@@ -100,6 +101,7 @@ public class PiedestalController : MonoBehaviour
             newItem.GetComponent<SphereCollider>().enabled = false;
             clear2 = true;
 
+            oeilGauche.SetActive(true);
             MeshRenderer meshGauche = oeilGauche.GetComponent<MeshRenderer>();
             meshGauche.material = matClear;
         }
