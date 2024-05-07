@@ -42,6 +42,7 @@ namespace _3CFeel.Controller
         public PiedestalController piedestal;
         public InventoryController theInventory;
         public CameraController camControl;
+        public AudioManager theAudio;
 
         [Header("Ground Check")]
         public float PlayerHeight;
@@ -63,6 +64,8 @@ namespace _3CFeel.Controller
 
         private void Awake()
         {
+            theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
             inputActions = new();
             move = inputActions.Gameplay.Move;
            // jump = inputActions.Gameplay.Jump;
@@ -91,6 +94,7 @@ namespace _3CFeel.Controller
             // Boutons pour ouvrir/fermer l'inventaire
             if (Input.GetButtonDown("Fire1") && !PiedestalController.canPut1 && !CameraController.noUseCamera || Input.GetButtonDown("Fire1") && !PiedestalController.canPut2 && !CameraController.noUseCamera)
             { 
+                theAudio.OpenBag();
                 CameraController.noUseCamera = true;
                 InventoryController.noUseInventory = true;
                 panelInventaire.SetActive(true);
@@ -168,6 +172,7 @@ namespace _3CFeel.Controller
             // On ouvre l'inventaire pour déposer un objet
             if (Input.GetButtonDown("Fire3") && PiedestalController.canPut1 && !InventoryController.noUseInventory || Input.GetButtonDown("Fire3") && PiedestalController.canPut2 && !InventoryController.noUseInventory)
             {
+                theAudio.OpenBag();
                 piedestal.StartCoroutine(piedestal.PutobjectOf());
                 CameraController.noUseCamera = true;
                 panelInventaire.SetActive(true);
@@ -242,6 +247,9 @@ namespace _3CFeel.Controller
             }
             else
             {
+                if (timerFall >= 0.5f)
+                    theAudio.Falling();
+
                 timerFall = 0;
             }
         }

@@ -27,7 +27,7 @@ public class DoorSpawn : MonoBehaviour
         {
             isActive = true;
             Door.SetActive(true);
-            theAudio.sfxDoor.Play();
+            theAudio.CloseDoor();
         }
     }
 }

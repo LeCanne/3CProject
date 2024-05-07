@@ -9260,9 +9260,12 @@ MonoBehaviour:
   - {fileID: 7498363948509839593}
   - {fileID: 8451122581277295216}
   - {fileID: 6208514565704081398}
+  sfxFalling: {fileID: 0}
   sfxPickUp: {fileID: 0}
+  sfxBag: {fileID: 0}
   sfxDoor: {fileID: 0}
   sfxScrapping: {fileID: 0}
+  sfxCloseDoor: {fileID: 0}
   nbBootStep: 0
 --- !u!1 &7358748550483741743
 GameObject:
