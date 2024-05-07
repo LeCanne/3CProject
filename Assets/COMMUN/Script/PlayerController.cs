@@ -246,12 +246,13 @@ namespace _3CFeel.Controller
             if (!IsGrounded())
             {
                 timerFall += Time.deltaTime;
+                anim.SetBool("isFalling", true);
             }
             else
             {
                 if (timerFall >= 0.5f)
                     theAudio.Falling();
-
+                anim.SetBool("isFalling", false);
                 timerFall = 0;
             }
         }
