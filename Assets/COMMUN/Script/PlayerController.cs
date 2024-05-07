@@ -49,6 +49,8 @@ namespace _3CFeel.Controller
         public float PlayerHeight;
         public LayerMask whatIsGround;
         bool grounded;
+        private float fallspeedcheck;
+        public bool highfall;
 
         [Header("Slope Handling")]
         public float MaxSlopeAngle;
@@ -189,7 +191,25 @@ namespace _3CFeel.Controller
 
         void FixedUpdate()
         {
-            OnMove();
+            if(highfall == false)
+            {
+                OnMove();
+            }
+            else
+            {
+                if(timerFall <= 0)
+                {
+                    fallspeedcheck += Time.deltaTime;
+                }
+
+                if(fallspeedcheck > 0.5f)
+                {
+                    highfall = false;
+                    fallspeedcheck = 0;
+                }
+               
+            }
+           
         }
 
         private void OnEnable()
@@ -210,38 +230,43 @@ namespace _3CFeel.Controller
 
         public void Animations()
         {
-            anim.SetFloat("VelocityX", Mathf.Abs(move.ReadValue<Vector2>().magnitude));
-            anim.SetFloat("VelocityZ", rb.velocity.z);
-            anim.SetFloat("TimeIdle", timerIdle);
-            anim.SetFloat("TimeFall", timerFall);
-            anim.SetBool("IsFalling", isFall);
-
-            if (rb.velocity.x != 0 ||  rb.velocity.z != 0) 
+            if (highfall == false)
             {
+
+
+                anim.SetFloat("VelocityX", Mathf.Abs(move.ReadValue<Vector2>().magnitude));
+                anim.SetFloat("VelocityZ", rb.velocity.z);
+            }
+             anim.SetFloat("TimeIdle", timerIdle);
+             anim.SetFloat("TimeFall", timerFall);
+             anim.SetBool("IsFalling", isFall);
+
+             if (rb.velocity.x != 0 ||  rb.velocity.z != 0) 
+             {
                 checkIdle = false;
                 timerIdle = 9;
                
-            }
+             }
 
-            if (rb.velocity.x == 0f && rb.velocity.z == 0f) 
-            {
-                timerIdle -= Time.deltaTime;
-                
-                if (timerIdle <= 0)
+                if (rb.velocity.x == 0f && rb.velocity.z == 0f)
                 {
-                    if(checkIdle == false)
-                    {
-                        anim.SetTrigger("IsIdle");
-                        checkIdle = true;
-                       
-                    }
-                   
-                    
-                }
+                    timerIdle -= Time.deltaTime;
 
-                
+                    if (timerIdle <= 0)
+                    {
+                        if (checkIdle == false)
+                        {
+                            anim.SetTrigger("IsIdle");
+                            checkIdle = true;
+
+                        }
+
+
+                    }
+
+                }
               
-            }
+            
 
             if (!IsGrounded())
             {
@@ -251,7 +276,11 @@ namespace _3CFeel.Controller
             else
             {
                 if (timerFall >= 0.5f)
+                {
+                    highfall = true;
                     theAudio.Falling();
+                }
+                  
                 anim.SetBool("isFalling", false);
                 timerFall = 0;
             }
