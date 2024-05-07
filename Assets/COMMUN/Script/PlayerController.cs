@@ -258,6 +258,7 @@ namespace _3CFeel.Controller
                         {
                             anim.SetTrigger("IsIdle");
                             checkIdle = true;
+                            timerIdle = 12;
 
                         }
 
