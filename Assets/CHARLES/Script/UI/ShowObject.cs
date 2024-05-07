@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class ShowObject : MonoBehaviour
 {
     public DoorController theDoor;
-    private ItemController theItem;
+    public ItemController theItem;
     private PlayerController thePlayer;
 
     public DepthOfField blur;
@@ -35,6 +35,14 @@ public class ShowObject : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (isRightEye)
+        {
+            theDoor = GameObject.Find("porte_enigme_LowPoly_Exit").GetComponent<DoorController>();
+        }
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Fire3") && canClose)
@@ -51,6 +59,7 @@ public class ShowObject : MonoBehaviour
             }
 
             gameObject.SetActive(false);
+            Destroy(theItem.gameObject);
         }
     }
 

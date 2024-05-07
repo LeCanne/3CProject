@@ -258,6 +258,7 @@ namespace _3CFeel.Controller
                         {
                             anim.SetTrigger("IsIdle");
                             checkIdle = true;
+                            timerIdle = 12;
 
                         }
 
@@ -279,6 +280,7 @@ namespace _3CFeel.Controller
                 {
                     highfall = true;
                     theAudio.Falling();
+                    anim.SetTrigger("HighFall");
                 }
                   
                 anim.SetBool("isFalling", false);
