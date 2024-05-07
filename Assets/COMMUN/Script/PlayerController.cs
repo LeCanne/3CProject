@@ -276,7 +276,7 @@ namespace _3CFeel.Controller
                     Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
                     skin.transform.rotation = Quaternion.Slerp(skin.transform.rotation, toRotation, Time.fixedDeltaTime / 0.06f);
                     direction.y = 0;
-                    anim.SetBool("isWalk", false);
+                   
 
                 }
                 else
@@ -284,7 +284,7 @@ namespace _3CFeel.Controller
                    
                     
                         skin.transform.localEulerAngles = new Vector3(0, camControl.gameObject.transform.eulerAngles.y, 0);
-                    anim.SetBool("isWalk", true);
+                  
                     
                 }
                
@@ -478,10 +478,12 @@ namespace _3CFeel.Controller
             {
                 camControl.cameraState = CameraController.CAMERASTATES.CLOSE;
                 MaxSpeed = 3;
+                anim.SetBool("isWalk", true);
             }
 
             if (other.CompareTag("DefaultCamera"))
             {
+                anim.SetBool("isWalk", false);
                 camControl.cameraState = CameraController.CAMERASTATES.DEFAULT;
                 MaxSpeed = OGspeed;
             }
