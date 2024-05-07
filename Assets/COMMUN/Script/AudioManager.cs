@@ -9,17 +9,16 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfxPickUp, sfxOpenBag;
     public AudioSource sfxDoor, sfxScrapping, sfxCloseDoor;
 
-
     public int nbBootStep;
 
-    // Procédures activées par des animations
+    // Procédure activée par des animations
     public void BootStep()
     {
         nbBootStep = Random.Range(0, 4);
         sfxBootStepList[nbBootStep].Play();
     }
 
-    // Procédures activées sur des scripts
+    // Procédures activées par des scripts
     public void Falling()
     {
         sfxFalling.Play();
