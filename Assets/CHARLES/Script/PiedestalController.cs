@@ -41,6 +41,8 @@ public class PiedestalController : MonoBehaviour
 
     private void Awake()
     {
+        clear1 = false;
+        clear2 = false;
         theAudio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 

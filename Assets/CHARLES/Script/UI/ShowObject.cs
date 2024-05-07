@@ -28,6 +28,11 @@ public class ShowObject : MonoBehaviour
     {
         thePlayer = GameObject.FindAnyObjectByType<PlayerController>();
 
+        if (isRightEye) 
+        { 
+            theDoor =  GameObject.Find("porte_enigme_LowPoly_Exit").GetComponent<DoorController>();
+        }
+
         DepthOfField dof;
         if (volume.profile.TryGet<DepthOfField>(out dof))
         {
