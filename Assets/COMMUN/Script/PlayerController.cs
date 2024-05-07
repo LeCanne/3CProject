@@ -27,6 +27,7 @@ namespace _3CFeel.Controller
 
         [Header("PlayerSettings")]
         public float MaxSpeed;
+        private float OGspeed;
         public float rotationSpeed;
         private Vector3 forceDirection = Vector3.zero;
         private float movementForce = 1f;
@@ -54,13 +55,13 @@ namespace _3CFeel.Controller
         private RaycastHit slopeHit;
         private bool exitingSlope;
         private bool hasExited;
-        private float OGspeed;
+    
 
         Vector3 moveDirection;
 
         public Animator anim;
         public float timerIdle, timerFall;
-        private bool isTime, isFall;
+        private bool checkIdle, isFall;
 
         private void Awake()
         {
@@ -80,7 +81,7 @@ namespace _3CFeel.Controller
 
         void Start()
         {
-            
+            timerIdle = 9;
         }
 
         private void Update()
@@ -217,28 +218,29 @@ namespace _3CFeel.Controller
 
             if (rb.velocity.x != 0 ||  rb.velocity.z != 0) 
             {
+                checkIdle = false;
                 timerIdle = 9;
+               
             }
 
             if (rb.velocity.x == 0f && rb.velocity.z == 0f) 
             {
-                if (timerIdle > 8) 
+                timerIdle -= Time.deltaTime;
+                
+                if (timerIdle <= 0)
                 {
-                    isTime = false;
-                }
-                else if (timerIdle <= 0)
-                {
-                    isTime= true;
+                    if(checkIdle == false)
+                    {
+                        anim.SetTrigger("IsIdle");
+                        checkIdle = true;
+                       
+                    }
+                   
+                    
                 }
 
-                if (isTime)
-                {
-                    timerIdle += Time.deltaTime;
-                }
-                else if (!isTime) 
-                {
-                    timerIdle = 0;
-                }
+                
+              
             }
 
             if (!IsGrounded())
